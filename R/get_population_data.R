@@ -35,7 +35,6 @@ get_population_data <- function(number_fso,
   )
 
 
-
   # years -------------------------------------------------------------------
 
   query_year <- fso_metadata |>
