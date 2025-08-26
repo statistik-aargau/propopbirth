@@ -27,6 +27,7 @@ forecast_fertility_rate <- function(fer_dat,
 min_fer <- min(fer_dat$fer[fer_dat$fer != 0])  
   
 # subjective correction (e.g. instead of zero: 10 % of lowest value)
+# Whg? logarithm not possible with zero
 corr_value <- min_fer * 0.1
 
 # age: min, max
