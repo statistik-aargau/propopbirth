@@ -73,6 +73,9 @@ input <- get_input_data(
   fer_last_years = 1
 )
 
+# comment:
+# fer_y (fertility per year) is in the output to make plots
+# at the very end of the fertility rate forecast
 
 
 # forecast: tfr ------------------------------------------------------------
@@ -145,8 +148,21 @@ forecast_fer <- forecast_fertility_rate(
   year_begin = 2024, 
   year_end = 2075)
 
-# plot
- forecast_fer |>
+
+# plot: year on x-axis
+    forecast_fer |>     
+    bind_rows(input$fer_y) |>
+    filter(age %% 5 == 0) |> 
+    mutate(age = factor(age)) |>
+    ggplot() +
+    geom_vline(xintercept = year_last + 1, linetype = 2) +      
+    geom_line(aes(year, birth_rate, color = age)) +
+    facet_grid(nat ~ spatial_unit)
+
+
+# plot: age on x-axis
+    forecast_fer |>     
+    bind_rows(input$fer_y ) |>
     filter(year %% 10 == 0) |>
     mutate(year = factor(year)) |>
     ggplot() +

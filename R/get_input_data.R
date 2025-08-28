@@ -111,7 +111,13 @@ get_input_data <- function(pop, bir,
             
 # Output ------------------------------------------------------------------
     
-  return(list(tfr = tfr, mab = mab, fer = fer))  
+# fer_y (fertility per year) is in the output to make plots
+# (at the very end of the fertility rate forecast)
+  fer_y_out <- fer_y |> 
+    rename(birth_rate = fer) |> 
+    select(spatial_unit, nat, year, age, birth_rate)
+  
+  return(list(tfr = tfr, mab = mab, fer = fer, fer_y = fer_y_out))  
   
 }
   
