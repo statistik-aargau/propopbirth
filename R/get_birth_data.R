@@ -11,6 +11,7 @@
 #' @return births, tibble (spatial_unit, year, nationality, age, pop), 
 #' with or without nat (nationality)
 #' @export
+#' @autoglobal
 #'
 #' @examples
 # get_birth_data(

@@ -10,6 +10,7 @@
 #'
 #' @return birth rate, tibble with variables spatial_unit, nat, age, birth_rate
 #' @export
+#' @autoglobal
 #'
 #' @examples
 forecast_fertility_rate <- function(fer_dat,

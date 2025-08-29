@@ -9,6 +9,7 @@
 #'
 #' @return tibble with optimized parameter and objective function
 #' @export
+#' @autoglobal
 #'
 #' @examples
   opt_fun <- function(mab_proj, a0, age, y_no_a0, maxit, abstol){

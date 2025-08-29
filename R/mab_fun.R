@@ -7,6 +7,7 @@
 #'
 #' @return # diff (absolute difference between mab and mab_proj), one value
 #' @export
+#' @autoglobal
 #'
 #' @examples
 mab_fun <- function(a0, age, y_no_a0, mab_proj) {

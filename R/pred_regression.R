@@ -11,6 +11,7 @@
 #'
 #' @return
 #' @export
+#' @autoglobal
 #'
 #' @examples
 pred_regression <- function(y, x1, x2, x3, x4, x5, age_min, age_max) {

@@ -8,6 +8,7 @@
 #'
 #' @return #tibble prediction data
 #' @export
+#' @autoglobal
 #'
 #' @examples
 trend_arima <- function(year, y, year_begin, year_end, trend_prop) {

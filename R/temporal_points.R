@@ -10,6 +10,7 @@
 #'
 #' @return
 #' @export
+#' @autoglobal
 #'
 #' @examples
 temporal_points <- function(input_past, input_trend, year_begin, year_end, trend_prop, z0_prop, z1_prop){
