@@ -1,17 +1,23 @@
 Package: propopbirth
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R: c(
     person(
-      "Klemens", "Rosin", "klemens.rosin@zuerich.ch", 
-      role = c("aut", "cre")),
+      "Klemens", "Rosin", 
+      email = "klemens.rosin@zuerich.ch",
+      role = c("aut", "cre")
+    ),
     person(
-      "Felix", "Lorenz", "felix.lorenz@tg.ch",
-      role = c("aut")),
+      "Felix", "Lorenz",
+      email = "felix.lorenz@tg.ch",
+      role = "aut"
+    ),
     person(
-      "Norah", "Efosa", "norah.efosa@ag.ch",
-      role = c("cbt"))
+      "Norah", "Efosa",
+      email = "norah.efosa@ag.ch",
+      role = "cbt"
     )
+  )
 Description: What the package does (one paragraph).
 URL: Set URL
 License: GPL (>= 3)
