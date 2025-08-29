@@ -9,7 +9,7 @@
 #' @param spatial_unit # spatial unit names (free choice), vector
 #' @param with_nationality # TRUE (with nationality), FALSE (without nationality)
 #'
-#' @return female population at 'fertile age' at the end of the year, 
+#' @return female population at 'fertile age' at the end of the year,
 #' tibble (spatial_unit, year, age, pop), with or without nat (nationality)
 #' @export
 #' @autoglobal
@@ -24,10 +24,10 @@
 #         spatial_unit = c("Stadt Zürich", "Frauenfeld", "Uster"),
 #         with_nationality = TRUE)
 get_population_data <- function(number_fso,
-                    year_first, year_last,
-                    age_fert_min, age_fert_max,
-                    spatial_code, spatial_unit,
-                    with_nationality = TRUE) {
+                                year_first, year_last,
+                                age_fert_min, age_fert_max,
+                                spatial_code, spatial_unit,
+                                with_nationality = TRUE) {
   # metadata ----------------------------------------------------------------
 
   fso_metadata <- BFS::bfs_get_metadata(

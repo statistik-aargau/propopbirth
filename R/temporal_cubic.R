@@ -10,11 +10,10 @@
 #'
 #' @examples
 temporal_cubic <- function(points_dat, year_begin, year_end) {
-  
-  # years: numeric  
-    year_begin <- as.numeric(year_begin)  
-    year_end <- as.numeric(year_end)   
-  
+  # years: numeric
+  year_begin <- as.numeric(year_begin)
+  year_end <- as.numeric(year_end)
+
   # parameters
   cubic_para <- points_dat |>
     dplyr::mutate(

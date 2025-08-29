@@ -7,5 +7,3 @@
 is_tibble_with_cols <- function(x) {
   inherits(x, "tbl_df") && all(c("spatial_unit", "nat") %in% names(x))
 }
-
-

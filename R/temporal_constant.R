@@ -10,11 +10,10 @@
 #'
 #' @examples
 temporal_constant <- function(points_dat, year_begin, year_end) {
-  
-  # years: numeric  
-    year_begin <- as.numeric(year_begin)  
-    year_end <- as.numeric(year_end)    
-  
+  # years: numeric
+  year_begin <- as.numeric(year_begin)
+  year_end <- as.numeric(year_end)
+
   # prediction
   pred <- tidyr::expand_grid(
     year = year_begin:year_end,

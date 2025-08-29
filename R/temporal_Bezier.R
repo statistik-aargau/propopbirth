@@ -11,11 +11,11 @@
 #' @examples
 temporal_Bezier <- function(points_dat, year_begin, year_end) {
   # parameters
-  
-  # years: numeric  
-    year_begin <- as.numeric(year_begin)  
-    year_end <- as.numeric(year_end)    
-  
+
+  # years: numeric
+  year_begin <- as.numeric(year_begin)
+  year_end <- as.numeric(year_end)
+
   Bezier_para <- points_dat |>
     dplyr::mutate(
       delta_z = if_else(z0 - z1 == 0, 0.000000001, z0 - z1),

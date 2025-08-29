@@ -12,21 +12,24 @@
 #' @autoglobal
 #'
 #' @examples
-  opt_fun <- function(mab_proj, a0, age, y_no_a0, maxit, abstol){
+opt_fun <- function(mab_proj, a0, age, y_no_a0, maxit, abstol) {
+  res <- optim(
+    par = a0,
+    mab_fun,
+    age = age,
+    y_no_a0 = y_no_a0,
+    mab_proj = mab_proj,
+    method = "BFGS",
+    control = list(
+      maxit = maxit,
+      abstol = abstol
+    )
+  )
 
-      res <- optim(par = a0,
-                    mab_fun,
-                      age = age,
-                       y_no_a0 = y_no_a0,
-                       mab_proj = mab_proj,
-                    method = "BFGS",
-                    control = list(maxit = maxit,
-                                   abstol = abstol))
+  out <- tibble(
+    par = res$par,
+    value = res$value
+  )
 
-      out <- tibble(par = res$par,
-             value = res$value)
-
-      return(out)
-
-
-  }
+  return(out)
+}
