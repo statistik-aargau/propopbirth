@@ -1,0 +1,19 @@
+---
+title: "forecast_tfr_mab"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{forecast_tfr_mab}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(propopbirth)
+```
