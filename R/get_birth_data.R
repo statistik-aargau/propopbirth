@@ -8,7 +8,7 @@
 #' @param spatial_unit # spatial unit names (free choice), vector
 #' @param with_nationality # TRUE (with nationality), FALSE (without nationality)
 #'
-#' @return births, tibble (spatial_unit, year, nationality, age, pop), 
+#' @return births, tibble (spatial_unit, year, nationality, age, pop),
 #' with or without nat (nationality)
 #' @export
 #' @autoglobal
@@ -23,9 +23,9 @@
 #         spatial_unit = c("Stadt Zürich", "Frauenfeld", "Uster"),
 #         with_nationality = TRUE)
 get_birth_data <- function(year_first, year_last,
-                    age_fert_min, age_fert_max,
-                    spatial_code, spatial_unit,
-                    with_nationality = TRUE) {
+                           age_fert_min, age_fert_max,
+                           spatial_code, spatial_unit,
+                           with_nationality = TRUE) {
   # lookup ------------------------------------------------------------------
 
   # spatial units

@@ -9,18 +9,16 @@
 #' @autoglobal
 #'
 #' @examples
-
 constant_model <- function(in_dat, year_begin, year_end) {
-  
-  # years: numeric  
-    year_begin <- as.numeric(year_begin)  
-    year_end <- as.numeric(year_end) 
-  
+  # years: numeric
+  year_begin <- as.numeric(year_begin)
+  year_end <- as.numeric(year_end)
+
   # last year of previous model
-  last_year <- in_dat |> 
-    filter(year == max(year)) |> 
+  last_year <- in_dat |>
+    filter(year == max(year)) |>
     select(spatial_unit, nat, y)
-  
+
   # prediction
   pred <- tidyr::expand_grid(
     year = year_begin:year_end,
@@ -36,27 +34,3 @@ constant_model <- function(in_dat, year_begin, year_end) {
   # output
   return(pred)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
