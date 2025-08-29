@@ -9,6 +9,7 @@
 #'
 #' @return predictions (tibble)
 #' @export
+#' @autoglobal
 #'
 #' @examples
 forecast_tfr_mab <- function(

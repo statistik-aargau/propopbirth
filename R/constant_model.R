@@ -6,6 +6,7 @@
 #'
 #' @return #tibble with prediction data
 #' @export
+#' @autoglobal
 #'
 #' @examples
 

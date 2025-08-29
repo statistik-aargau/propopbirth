@@ -6,6 +6,7 @@
 #'
 #' @return #tibble with prediction data
 #' @export
+#' @autoglobal
 #'
 #' @examples
 temporal_Bezier <- function(points_dat, year_begin, year_end) {

@@ -15,6 +15,7 @@
 #' mab (mean age of the mother at birth), 
 #' fer (fertility rate of last year(s))
 #' @export
+#' @autoglobal
 #'
 #' @examples
 # get_input_data(pop = pop,

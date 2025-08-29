@@ -8,6 +8,7 @@
 #'
 #' @return #tibble with prediction data
 #' @export
+#' @autoglobal
 #'
 #' @examples
 trend_lm <- function(input_lm, year_begin, year_end, trend_past, trend_prop) {

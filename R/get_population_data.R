@@ -12,6 +12,7 @@
 #' @return female population at 'fertile age' at the end of the year, 
 #' tibble (spatial_unit, year, age, pop), with or without nat (nationality)
 #' @export
+#' @autoglobal
 #'
 #' @examples
 # get_population_data(number_fso = "px-x-0102010000_101",
