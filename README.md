@@ -8,6 +8,13 @@ Work in progress!
 
 ...
 
+## Population projections
+
+The output from `{propopbirth}` is fully compatible with `{propop}` (An R package
+for population projections in R). 
+
+TODO: example
+
 ## Installation
 
 To install the current github version of the package, make sure you have devtools
