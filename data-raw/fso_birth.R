@@ -23,8 +23,7 @@ fso_birth <- fso_birth_raw |>
       nat_num == 1 ~ "ch",
       nat_num == 2 ~ "int",
       .default = "unknown"
-    ),
-    nat = factor(nat, levels = c("ch", "int"))
+    )
   ) |>
   # add municipality names
   dplyr::left_join(
