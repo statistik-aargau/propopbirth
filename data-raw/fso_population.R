@@ -1,0 +1,19 @@
+#' Population data from the Federal Statistical Office
+#'
+#' @description Population from the canton of Aargau.
+#'
+#' Update description in folder propop/R/
+
+# Default way to create data, contingent on STATPOP availability
+fso_pop <- get_population_data(
+  number_fso = "px-x-0102010000_101",
+  year_first = 2020,
+  year_last = 2023,
+  age_fert_min = 15,
+  age_fert_max = 49,
+  spatial_code = c("0261", "4566", "0198"),
+  spatial_unit = c("Stadt Zürich", "Frauenfeld", "Uster"),
+  binational = TRUE
+)
+
+usethis::use_data(fso_pop, overwrite = TRUE)
