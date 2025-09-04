@@ -14,7 +14,7 @@ temporal_constant(points_dat, year_begin, year_end)
 \item{year_end}{end of prediction}
 }
 \value{
-#tibble with prediction data
+tibble with prediction data
 }
 \description{
 temporal model: constant

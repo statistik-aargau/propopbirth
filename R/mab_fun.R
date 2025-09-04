@@ -1,11 +1,11 @@
 #' mab (mean age at birth) function
 #'
-#' @param a0 # intercept (to be optimized), one value
-#' @param age # age (from age_min - 1 until age_max), vector
-#' @param y_no_a0 # regression result without intercept, vector
-#' @param mab_proj # projected mab (objective), one value
+#' @param a0 intercept (to be optimized), one value
+#' @param age age (from age_min - 1 until age_max), vector
+#' @param y_no_a0 regression result without intercept, vector
+#' @param mab_proj projected mab (objective), one value
 #'
-#' @return # diff (absolute difference between mab and mab_proj), one value
+#' @return diff (absolute difference between mab and mab_proj), one value
 #' @export
 #' @autoglobal
 #'

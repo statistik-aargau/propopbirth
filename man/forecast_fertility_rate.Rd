@@ -2,7 +2,7 @@
 % Please edit documentation in R/forecast_fertility_rate.R
 \name{forecast_fertility_rate}
 \alias{forecast_fertility_rate}
-\title{forecast age-specific fertility rates}
+\title{Forecast age-specific fertility rates}
 \usage{
 forecast_fertility_rate(
   fer_dat,
@@ -33,5 +33,5 @@ forecast_fertility_rate(
 birth rate, tibble with variables spatial_unit, nat, age, birth_rate
 }
 \description{
-forecast age-specific fertility rates
+Forecast age-specific fertility rates
 }

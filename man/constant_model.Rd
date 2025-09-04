@@ -2,20 +2,21 @@
 % Please edit documentation in R/constant_model.R
 \name{constant_model}
 \alias{constant_model}
-\title{constant model}
+\title{Constant model}
 \usage{
-constant_model(in_dat, year_begin, year_end)
+constant_model(points_dat, year_begin, year_end)
 }
 \arguments{
-\item{year_begin}{begin of prediction}
+\item{points_dat}{tibble with model results of the previous period by
+\code{spatial_unit} and \code{nat}.}
 
-\item{year_end}{end of prediction}
+\item{year_begin}{first year of the prediction.}
 
-\item{points_dat}{tibble with model results of previous period by spatial_unit, nat}
+\item{year_end}{last year of the prediction.}
 }
 \value{
-#tibble with prediction data
+tibble with prediction data
 }
 \description{
-constant model
+Constant model
 }

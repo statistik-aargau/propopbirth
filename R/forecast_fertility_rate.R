@@ -1,4 +1,4 @@
-#' forecast age-specific fertility rates
+#' Forecast age-specific fertility rates
 #'
 #' @param fer_dat fertility data, tibble with variables spatial_unit, nat, age, fer
 #' @param tfr_dat tfr data, tibble with variables spatial_unit, nat, year, tfr

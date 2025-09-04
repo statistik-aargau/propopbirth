@@ -1,12 +1,12 @@
 #' trend prediction with linear model
 #'
-#' @param input_lm # tibble with variables year, y, spatial_unit, nat
-#' @param year_begin # begin of prediction
-#' @param year_end # end of prediction
-#' @param trend_past # amount of past years that are used to fit the model
-#' @param trend_prop # y value of the end point: proportion of trend vs. past
+#' @param input_lm tibble with variables year, y, spatial_unit, nat
+#' @param year_begin begin of prediction
+#' @param year_end end of prediction
+#' @param trend_past amount of past years that are used to fit the model
+#' @param trend_prop y value of the end point: proportion of trend vs. past
 #'
-#' @return #tibble with prediction data
+#' @return tibble with prediction data
 #' @export
 #' @autoglobal
 #'

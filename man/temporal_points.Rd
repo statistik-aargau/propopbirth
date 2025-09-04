@@ -15,9 +15,9 @@ temporal_points(
 )
 }
 \arguments{
-\item{input_past}{#tibble with variables year, x, spatial_unit, nat}
+\item{input_past}{tibble with variables year, x, spatial_unit, nat}
 
-\item{input_trend}{#tibble with variables year, x, spatial_unit, nat, category}
+\item{input_trend}{tibble with variables year, x, spatial_unit, nat, category}
 
 \item{year_begin}{begin of prediction (temporal model)}
 
