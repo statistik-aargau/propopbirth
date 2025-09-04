@@ -29,10 +29,33 @@
 #' )
 get_population_data <- function(
     number_fso,
-    year_first, year_last,
-    age_fert_min, age_fert_max,
-    spatial_code, spatial_unit,
+    year_first, 
+    year_last,
+    age_fert_min, 
+    age_fert_max,
+    spatial_code, 
+    spatial_unit,
     binational = TRUE) {
+  
+  # arguments
+  assertthat::assert_that(is.character(number_fso),
+    msg = "The argument `number_fso` must be character."
+  )
+  assertthat::assert_that(is.numeric(year_first),
+    msg = "The argument `year_first` must be numeric."
+  )
+  assertthat::assert_that(is.numeric(year_last),
+    msg = "The argument `year_last` must be numeric."
+  )
+  assertthat::assert_that(is.numeric(age_fert_min),
+    msg = "The argument `age_fert_min` must be numeric."
+  )
+  assertthat::assert_that(is.numeric(age_fert_max),
+    msg = "The argument `age_fert_max` must be numeric."
+  )
+  assertthat::assert_that(is.logical(binational),
+    msg = "The argument `binational` must be logical (TRUE or FALSE)."
+  )
   # Get metadata ------------------------------------------------------------
   fso_metadata <- BFS::bfs_get_metadata(
     number_bfs = number_fso,
