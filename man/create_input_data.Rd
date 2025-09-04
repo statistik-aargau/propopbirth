@@ -11,7 +11,8 @@ create_input_data(
   year_last,
   age_fert_min,
   age_fert_max,
-  fer_last_years
+  fert_hist_years,
+  binational = TRUE
 )
 }
 \arguments{
@@ -31,18 +32,24 @@ spatial_unit, year, age, pop, with or without nat (nationality).}
 
 \item{fert_hist_years}{how many years are used to calculate age-specific
 fertility rates?}
+
+\item{binational}{boolean, \code{TRUE} indicates that projections discriminate
+between two groups of nationalities. \code{FALSE} indicates that the
+projection is run without distinguishing between nationalities.}
 }
 \value{
 list with:
-tfr (total fertility rate),
-mab (mean age of the mother at birth),
-fer (fertility rate of last year(s))
+\itemize{
+\item tfr (total fertility rate),
+\item mab (mean age of the mother at birth),
+\item fer (fertility rate of last year(s))
+}
 }
 \description{
 Create model input data
 }
 \examples{
-make_input_data(
+create_input_data(
   population = fso_pop,
   births = fso_birth |>
     dplyr::filter(spatial_unit \%in\% c("Stadt Zürich", "Frauenfeld", "Uster")),
@@ -50,6 +57,7 @@ make_input_data(
   year_last = 2023,
   age_fert_min = 15,
   age_fert_max = 49,
-  fer_last_years = 1
+  fert_hist_years = 1,
+  binational = TRUE
 )
 }
