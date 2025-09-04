@@ -1,10 +1,10 @@
 #' temporal model: cubic
 #'
-#' @param points_dat # tibble with point information (x0, y0, z0, x1, y1, z1) by spatial_unit, nat
-#' @param year_begin # begin of prediction
-#' @param year_end # end of prediction
+#' @param points_dat tibble with point information (x0, y0, z0, x1, y1, z1) by spatial_unit, nat
+#' @param year_begin begin of prediction
+#' @param year_end end of prediction
 #'
-#' @return #tibble with prediction data
+#' @return tibble with prediction data
 #' @export
 #' @autoglobal
 #'

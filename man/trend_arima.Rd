@@ -18,7 +18,7 @@ trend_arima(year, y, year_begin, year_end, trend_prop)
 \item{trend_prop}{y value of the end point: proportion of trend vs. past}
 }
 \value{
-#tibble prediction data
+tibble prediction data
 }
 \description{
 trend prediction with arima model

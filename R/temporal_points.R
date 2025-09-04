@@ -1,12 +1,12 @@
 #' temporal model: start and end point
 #'
-#' @param input_past #tibble with variables year, x, spatial_unit, nat
-#' @param input_trend #tibble with variables year, x, spatial_unit, nat, category
-#' @param year_begin # begin of prediction (temporal model)
-#' @param year_end # end of prediction (temporal model)
-#' @param trend_prop # y value of the end point: proportion of trend vs. past
-#' @param z0_prop # proportion of the calculated slope of the start point (z0)
-#' @param z1_prop # proportion of the calculated slope of the end point (z1)
+#' @param input_past tibble with variables year, x, spatial_unit, nat
+#' @param input_trend tibble with variables year, x, spatial_unit, nat, category
+#' @param year_begin begin of prediction (temporal model)
+#' @param year_end end of prediction (temporal model)
+#' @param trend_prop y value of the end point: proportion of trend vs. past
+#' @param z0_prop proportion of the calculated slope of the start point (z0)
+#' @param z1_prop proportion of the calculated slope of the end point (z1)
 #'
 #' @return
 #' @export

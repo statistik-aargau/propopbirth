@@ -1,6 +1,6 @@
 #' Create model input data
 #'
-#' @param population data frame, female population at 'fertile age'; columns: 
+#' @param population data frame, female population at 'fertile age'; columns:
 #'   spatial_unit, year, age, pop, with or without nat (nationality).
 #' @param births data frame, births of females in the fertile age range; columns:
 #'   spatial_unit, year, age, pop, with or without nat (nationality).
@@ -8,19 +8,20 @@
 #' @param year_last numeric, last year.
 #' @param age_fert_min numeric, minimum age (of 'fertile age').
 #' @param age_fert_max numeric, minimum age (of 'fertile age').
-#' @param fert_hist_years # how many years are used to calculate age-specific fertility rates?
+#' @param fert_hist_years how many years are used to calculate age-specific
+#'  fertility rates?
 #'
 #' @return list with:
-#' tfr (total fertility rate),
-#' mab (mean age of the mother at birth),
-#' fer (fertility rate of last year(s))
+#'  * tfr (total fertility rate),
+#'  * mab (mean age of the mother at birth),
+#'  * fer (fertility rate of last year(s))
 #' @export
 #' @autoglobal
 #'
 #' @examples
 #' make_input_data(
 #'   population = fso_pop,
-#'   births = fso_birth |> 
+#'   births = fso_birth |>
 #'     dplyr::filter(spatial_unit %in% c("Stadt Zürich", "Frauenfeld", "Uster")),
 #'   year_first = 2011,
 #'   year_last = 2023,
@@ -29,11 +30,11 @@
 #'   fer_last_years = 1
 #' )
 create_input_data <- function(
-    population, 
+    population,
     births,
-    year_first, 
+    year_first,
     year_last,
-    age_fert_min, 
+    age_fert_min,
     age_fert_max,
     fer_last_years) {
   # mean annual population --------------------------------------------------
@@ -60,7 +61,7 @@ create_input_data <- function(
   pop_mean <- pop_end_year |>
     dplyr::filter(year >= year_first, age >= age_fert_min) |>
     dplyr::left_join(
-      pop_next, 
+      pop_next,
       by = c("spatial_unit", "year" = "year_next", "nat", "age" = "age_next")
     ) |>
     tidyr::replace_na(list(pop_previous = 0)) |>

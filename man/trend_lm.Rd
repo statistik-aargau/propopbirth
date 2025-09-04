@@ -18,7 +18,7 @@ trend_lm(input_lm, year_begin, year_end, trend_past, trend_prop)
 \item{trend_prop}{y value of the end point: proportion of trend vs. past}
 }
 \value{
-#tibble with prediction data
+tibble with prediction data
 }
 \description{
 trend prediction with linear model

@@ -1,12 +1,12 @@
 #' trend prediction with arima model
 #'
-#' @param year # years of input data
-#' @param y # y values of input data (e.a. TFR or MAB)
-#' @param year_begin # begin of prediction
-#' @param year_end # end of prediction
-#' @param trend_prop # y value of the end point: proportion of trend vs. past
+#' @param year years of input data
+#' @param y y values of input data (e.a. TFR or MAB)
+#' @param year_begin begin of prediction
+#' @param year_end end of prediction
+#' @param trend_prop y value of the end point: proportion of trend vs. past
 #'
-#' @return #tibble prediction data
+#' @return tibble prediction data
 #' @export
 #' @autoglobal
 #'
