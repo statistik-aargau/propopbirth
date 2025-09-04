@@ -88,7 +88,7 @@ fso_pop |>
 TODO
 
 ```{r}
-input <- make_input_data(
+input <- create_input_data(
   population = fso_pop,
   births = fso_birth |>
     dplyr::filter(spatial_unit %in% c("Stadt Zürich", "Frauenfeld", "Uster")),
@@ -96,8 +96,9 @@ input <- make_input_data(
   year_last = 2023,
   age_fert_min = 15,
   age_fert_max = 49,
-  fer_last_years = 1
-)
+  fert_hist_years = 1,
+  binational = TRUE
+) 
 ```
 
 ```{r}
