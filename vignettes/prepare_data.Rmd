@@ -47,7 +47,7 @@ You need birth data and population data to run the fertility forecast. **If you 
 
 ## Births
 
-Currently, the FSO does not publish historical births data as open data. However, we have received permission to use and publish the data in `{propopbirth}`. We prepared the original data from the FSO, adapting column names and factor levels, and replaced municipality numbers by [municipality names](https://www.bfs.admin.ch/bfs/de/home/grundlagen/agvch.html). 
+Currently, the FSO does not publish historical births data as open data. However, we have received permission to use and publish the data in `{propopbirth}`. We prepared the original data from the FSO, adapting column names and factor levels, and replaced municipality numbers by [municipality names](https://www.agvchapp.bfs.admin.ch/de/state/results?SnapshotDate=1.1.2023). 
 
 The data for three selected municipalities looks like this:
 
