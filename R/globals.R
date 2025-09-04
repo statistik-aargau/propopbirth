@@ -17,7 +17,6 @@ utils::globalVariables(c(
   "pop_previous", # <create_input_data>
   "pop", # <create_input_data>
   "n_birth", # <create_input_data>
-  "birth_rate", # <create_input_data>
   "spatial_unit", # <forecast_fertility_rate>
   "nat", # <forecast_fertility_rate>
   "fer", # <forecast_fertility_rate>
