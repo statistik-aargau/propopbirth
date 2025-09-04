@@ -3,17 +3,103 @@ title: "prepare_data"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{prepare_data}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
+# Overview
+
+TODO
+
+```{r}
+library(propopbirth)
+```
+
+# Required data
+
+You need birth data and population data to run the fertility forecast. **If you don't have such data at hand, you can run the functions with example data**. Regardless of whether you bring your own or use example data, the structure of the data frames requires the following variables:
+
++---------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| Data                | Description                                                                                                             | Variables required                                                                              |
++=====================+=========================================================================================================================+=================================================================================================+
+| **Birth data**      | The historical number of births by females aggregated per demographic unit and year.                                    | -   `year` e.g. 2010 to 2023 for the FSO's birth data                                           |
+|                     |                                                                                                                         |                                                                                                 |
+|                     |                                                                                                                         | -   `spatial_unit` one (e.g. Canton) or several (e.g. municipalities) spatial units             |
+|                     |                                                                                                                         |                                                                                                 |
+|                     |                                                                                                                         | -   `nat` nationality, can be either "ch" and "int" or not specified (column `nat` is optional) |
+|                     |                                                                                                                         |                                                                                                 |
+|                     |                                                                                                                         | -   `age` the age of females                                                                    |
+|                     |                                                                                                                         |                                                                                                 |
+|                     |                                                                                                                         | -   `births` the number of births                                                               |
++---------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| **Population data** | Historical population records of females in a pre-defined fertility age range aggregated per demographic unit and year. | -   `year` e.g. 2010 to 2023 for the FSO's birth data                                           |
+|                     |                                                                                                                         |                                                                                                 |
+|                     |                                                                                                                         | -   `spatial_unit` one (e.g. Canton) or several (e.g. municipalities) spatial units             |
+|                     |                                                                                                                         |                                                                                                 |
+|                     |                                                                                                                         | -   `nat` nationality, can be either "ch" and "int" or not specified (column `nat` is optional) |
+|                     |                                                                                                                         |                                                                                                 |
+|                     |                                                                                                                         | -   `age` the age of females                                                                    |
+|                     |                                                                                                                         |                                                                                                 |
+|                     |                                                                                                                         | -   `n_pop` number of people                                                                    |
++---------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+
+## Births
+
+Currently, the FSO does not publish historical births data as open data. However, we have received permission to use and publish the data in `{propopbirth}`. We prepared the original data from the FSO, adapting column names and factor levels, and replaced municipality numbers by [municipality names](https://www.bfs.admin.ch/bfs/de/home/grundlagen/agvch.html). 
+
+The data for three selected municipalities looks like this:
+
+```{r, echo = TRUE}
+fso_birth |>
+  dplyr::filter(spatial_unit %in% c("Stadt Zürich", "Frauenfeld", "Uster")) |>
+  DT::datatable()
+```
+
+## Population
+
+Historical population records from the FSO can be obtained with the function `propopbirth::get_population_data`, defining timeframe, spatial units and further specific arguments:
+
+```{r, echo = TRUE, eval = FALSE}
+fso_pop <- get_population_data(
+  number_fso = "px-x-0102010000_101",
+  year_first = 2020,
+  year_last = 2023,
+  age_fert_min = 15,
+  age_fert_max = 49,
+  spatial_code = c("0261", "4566", "0198"),
+  spatial_unit = c("Stadt Zürich", "Frauenfeld", "Uster"),
+  binational = TRUE
 )
 ```
 
-```{r setup}
-library(propopbirth)
+The data for three selected municipalities looks like this:
+
+```{r, echo = TRUE}
+fso_pop |>
+  dplyr::filter(spatial_unit %in% c("Stadt Zürich", "Frauenfeld", "Uster")) |>
+  DT::datatable()
+```
+
+
+## Model input data
+
+TODO
+
+```{r}
+input <- make_input_data(
+  population = fso_pop,
+  births = fso_birth |>
+    dplyr::filter(spatial_unit %in% c("Stadt Zürich", "Frauenfeld", "Uster")),
+  year_first = 2011,
+  year_last = 2023,
+  age_fert_min = 15,
+  age_fert_max = 49,
+  fer_last_years = 1
+)
+```
+
+```{r}
+str(input)
 ```
