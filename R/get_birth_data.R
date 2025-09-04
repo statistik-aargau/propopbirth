@@ -42,9 +42,9 @@ get_birth_data <- function(year_first, year_last,
 
   # data --------------------------------------------------------------------
 
-  bir_path <- file.path(here::here(), "data/fso_birth.csv")
-
-  bir_dat <- suppressMessages(read_csv(bir_path)) |>
+  load(file.path(here::here(), "data/fso_birth.rda"))
+  
+  bir_dat <- fso_birth |>
     dplyr::filter(
       res_mun %in% spatial_lookup$spatial_code,
       year >= year_first, year <= year_last,
