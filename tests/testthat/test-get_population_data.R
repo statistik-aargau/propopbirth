@@ -11,5 +11,5 @@ test_that("snapshot test for get_population_data()", {
     binational = TRUE
   )
   
-  expect_snapshot(constructive::construct(get_population_snapshot))
+  expect_snapshot(dput(get_population_snapshot))
 })

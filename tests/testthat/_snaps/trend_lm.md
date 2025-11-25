@@ -1,21 +1,45 @@
 # snapshot test for trend_lm()
 
     Code
-      constructive::construct(trend_lm(input_lm = input_data, year_start = 2024,
-        year_end = 2055, trend_past = 7, trend_prop = 0.5))
+      dput(trend_lm(input_lm = input_data, year_start = 2024, year_end = 2055,
+        trend_past = 7, trend_prop = 0.5))
     Output
-      tibble::tibble(
-        spatial_unit = rep("Aarau", 64L),
-        nat = rep(c("ch", "int"), 32),
-        year = rep(2024:2055, each = 2L),
-        y = c(
-          1.063, 1.816, 1.056, 1.792, 1.05, 1.767, 1.044, 1.743, 1.037, 1.718, 1.031,
-          1.694, 1.025, 1.669, 1.018, 1.645, 1.012, 1.62, 1.006, 1.596, 0.999, 1.571,
-          0.993, 1.547, 0.987, 1.522, 0.98, 1.498, 0.974, 1.473, 0.968, 1.449, 0.961,
-          1.424, 0.955, 1.399, 0.949, 1.375, 0.942, 1.35, 0.936, 1.326, 0.93, 1.301,
-          0.923, 1.277, 0.917, 1.252, 0.911, 1.228, 0.904, 1.203, 0.898, 1.179, 0.892,
-          1.154, 0.885, 1.13, 0.879, 1.105, 0.873, 1.081, 0.866, 1.056
-        ),
-        category = rep("lm", 64L),
-      )
+      structure(list(spatial_unit = c("Aarau", "Aarau", "Aarau", "Aarau", 
+      "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", 
+      "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", 
+      "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", 
+      "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", 
+      "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", 
+      "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", 
+      "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", 
+      "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", "Aarau", 
+      "Aarau", "Aarau", "Aarau", "Aarau"), nat = c("ch", "int", "ch", 
+      "int", "ch", "int", "ch", "int", "ch", "int", "ch", "int", "ch", 
+      "int", "ch", "int", "ch", "int", "ch", "int", "ch", "int", "ch", 
+      "int", "ch", "int", "ch", "int", "ch", "int", "ch", "int", "ch", 
+      "int", "ch", "int", "ch", "int", "ch", "int", "ch", "int", "ch", 
+      "int", "ch", "int", "ch", "int", "ch", "int", "ch", "int", "ch", 
+      "int", "ch", "int", "ch", "int", "ch", "int", "ch", "int", "ch", 
+      "int"), year = c(2024L, 2024L, 2025L, 2025L, 2026L, 2026L, 2027L, 
+      2027L, 2028L, 2028L, 2029L, 2029L, 2030L, 2030L, 2031L, 2031L, 
+      2032L, 2032L, 2033L, 2033L, 2034L, 2034L, 2035L, 2035L, 2036L, 
+      2036L, 2037L, 2037L, 2038L, 2038L, 2039L, 2039L, 2040L, 2040L, 
+      2041L, 2041L, 2042L, 2042L, 2043L, 2043L, 2044L, 2044L, 2045L, 
+      2045L, 2046L, 2046L, 2047L, 2047L, 2048L, 2048L, 2049L, 2049L, 
+      2050L, 2050L, 2051L, 2051L, 2052L, 2052L, 2053L, 2053L, 2054L, 
+      2054L, 2055L, 2055L), y = c(1.063, 1.816, 1.056, 1.792, 1.05, 
+      1.767, 1.044, 1.743, 1.037, 1.718, 1.031, 1.694, 1.025, 1.669, 
+      1.018, 1.645, 1.012, 1.62, 1.006, 1.596, 0.999, 1.571, 0.993, 
+      1.547, 0.987, 1.522, 0.98, 1.498, 0.974, 1.473, 0.968, 1.449, 
+      0.961, 1.424, 0.955, 1.399, 0.949, 1.375, 0.942, 1.35, 0.936, 
+      1.326, 0.93, 1.301, 0.923, 1.277, 0.917, 1.252, 0.911, 1.228, 
+      0.904, 1.203, 0.898, 1.179, 0.892, 1.154, 0.885, 1.13, 0.879, 
+      1.105, 0.873, 1.081, 0.866, 1.056), category = c("lm", "lm", 
+      "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", 
+      "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", 
+      "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", 
+      "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", 
+      "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", "lm", 
+      "lm", "lm", "lm", "lm", "lm", "lm", "lm")), row.names = c(NA, 
+      -64L), class = c("tbl_df", "tbl", "data.frame"))
 
