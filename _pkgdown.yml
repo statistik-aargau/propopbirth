@@ -1,5 +1,27 @@
 url: https://statistik-aargau.github.io/propopbirth/
 template:
   bootstrap: 5
+  bootswatch: simplex
+  bslib:
+    base_font: {google: "Inter"}
+    heading_font: {google: "Inter"}
+    code_font: {google: "Source Code Pro"}
+    primary: "#007AB8"
+  includes:
+    in_header: pkgdown/extra.scss
+navbar:
+  components:
+    articles:
+      text: Vignettes
+      menu:
+      - text: Prepare input data
+        href: articles/prepare_data.html
+      - text: TFR and MAB forecast
+        href: articles/forecast_tfr_mab.html
+      - text: Fertility rate forecast
+        href: articles/forecast_fertility_rate.html
+  structure:
+    left:  [intro, reference, articles, news]
+    right: [search, github]
 
 

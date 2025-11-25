@@ -68,7 +68,7 @@ municipalities.
 
 ### Birth and population data
 
-```{r setup, message=FALSE, warning=FALSE}
+``` r
 library(ggplot2)
 library(propopbirth)
 library(dplyr)
@@ -76,7 +76,7 @@ library(dplyr)
 
 ### Create model input data
 
-```{r, echo = TRUE}
+``` r
 input <- create_input_data(
   population = fso_pop,
   births = fso_birth |> 
@@ -92,7 +92,7 @@ input <- create_input_data(
 
 ### TFR (total fertility rate) forecast
 
-```{r, echo = TRUE}
+``` r
 forecast_tfr <- forecast_tfr_mab(
   topic = "tfr",
   topic_data = input$tfr,
@@ -110,7 +110,7 @@ forecast_tfr <- forecast_tfr_mab(
 
 ### MAB (mean age of the mother at birth) forecast
 
-```{r, echo = TRUE}
+``` r
 forecast_mab <- forecast_tfr_mab(
   topic = "mab",
   topic_data = input$mab,
@@ -128,7 +128,7 @@ forecast_mab <- forecast_tfr_mab(
 
 ### Forecast of the age-specific fertility rate
 
-```{r, echo = TRUE}
+``` r
 forecast_fer <- forecast_fertility_rate(
   fer_dat = input$fer,
   tfr_dat = forecast_tfr,
