@@ -92,6 +92,11 @@ forecast_tfr <- forecast_tfr_mab(
 ```
 
 ```{r, fig.width=7, fig.height=5}
+#| fig.alt: >
+#|   The fertility rate forecast starts with the prediction of the total 
+#|   fertility rate (TFR); this forecast is shown by spatial unit and 
+#|   nationality.
+
 ggplot(forecast_tfr) +
   geom_line(aes(x = year, y = tfr, color = category)) +
   geom_point(aes(x = year, y = tfr, color = category)) +
@@ -118,6 +123,10 @@ forecast_mab <- forecast_tfr_mab(
 ```
 
 ```{r, fig.width=7, fig.height=5}
+#| fig.alt: >
+#|   After the TFR the MAB forecast is needed; the MAB prediction is shown by 
+#|   spatial unit and nationality.
+
 ggplot(forecast_mab) +
   geom_line(aes(x = year, y = mab, color = category)) +
   geom_point(aes(x = year, y = mab, color = category)) +
@@ -145,6 +154,10 @@ forecast_fer |>
 Plot with year on x-axis
 
 ```{r, fig.width=7, fig.height=5}
+#| fig.alt: >
+#|   The age-specific fertility rates are shown by year (past and future), 
+#|   age (selected age years), spatial unit, and nationality.
+
 y_last <- max(input[["fer_y"]]$year)
 
 forecast_fer |>
@@ -160,6 +173,10 @@ forecast_fer |>
 Plot with age on x-axis
 
 ```{r, fig.width=7, fig.height=5}
+#| fig.alt: >
+#|   The age-specific fertility rates are shown by year (past and future, 
+#|   selected years), age, spatial unit, and nationality.
+
 forecast_fer |>
   bind_rows(input$fer_y) |>
   filter(year %% 10 == 0) |>

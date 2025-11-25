@@ -124,6 +124,10 @@ input <- create_input_data(
 ### TFR
 
 ```{r, fig.width=7, fig.height=3}
+#| fig.alt: >
+#|   For historical data, the development of the total fertility rate (TFR) over 
+#|   time is displayed by spatial unit and nationality.
+
 ggplot(input$tfr) +
   geom_line(aes(x = year, y = tfr, color = nat)) +
   facet_wrap(~ spatial_unit) +
@@ -138,6 +142,10 @@ input$tfr |>
 ### MAB
 
 ```{r, fig.width=7, fig.height=3}
+#| fig.alt: >
+#|   For historical data, the development of the mean age of the mother at 
+#|   birth (MAB) over time is displayed by spatial unit and nationality.
+
 ggplot(input$mab) +
   geom_line(aes(x = year, y = mab, color = nat)) +
   facet_wrap(~ spatial_unit)+
@@ -152,6 +160,10 @@ input$mab |>
 ### Age-specific fertility rate
 
 ```{r, fig.width=7, fig.height=3}
+#| fig.alt: >
+#|   For historical data, the age-specific fertility rate is displayed by 
+#|   spatial unit and nationality (average over a selected number of years).
+
 ggplot(input$fer) +
   geom_line(aes(x = age, y = fer, color = nat)) +
   facet_wrap(~ spatial_unit)+
