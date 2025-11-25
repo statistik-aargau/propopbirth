@@ -8,13 +8,29 @@
 <title>Birth rate forecast based on the FSO methodology • propopbirth</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Inter-0.4.10/font.css" rel="stylesheet">
+<link href="deps/Source_Code_Pro-0.4.10/font.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Birth rate forecast based on the FSO methodology">
 <meta name="description" content="First, model input data are calculated. Second, TFR (total fertility rate) and MAB (mean age of the mother at birth) are predicted. Third, TFR and MAB forecasts are used to predict the age-specific birth rates.">
 <meta property="og:description" content="First, model input data are calculated. Second, TFR (total fertility rate) and MAB (mean age of the mother at birth) are predicted. Third, TFR and MAB forecasts are used to predict the age-specific birth rates.">
 </head>
 <body>
+<p>
+
+
+
+
+
+
+
+
+  pkgdown/extra.scss
+
+  
+
+  </p>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -33,11 +49,11 @@
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/forecast_fertility_rate.html">Fertility rate forecast</a></li>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-vignettes" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Vignettes</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-vignettes">
+<li><a class="dropdown-item" href="articles/prepare_data.html">Prepare input data</a></li>
     <li><a class="dropdown-item" href="articles/forecast_tfr_mab.html">TFR and MAB forecast</a></li>
-    <li><a class="dropdown-item" href="articles/prepare_data.html">Prepare input data</a></li>
+    <li><a class="dropdown-item" href="articles/forecast_fertility_rate.html">Fertility rate forecast</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
@@ -107,27 +123,73 @@
 <div class="section level3">
 <h3 id="birth-and-population-data">Birth and population data<a class="anchor" aria-label="anchor" href="#birth-and-population-data"></a>
 </h3>
-<p><code>{r setup, message=FALSE, warning=FALSE} library(ggplot2) library(propopbirth) library(dplyr)</code></p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://statistik-aargau.github.io/propopbirth/">propopbirth</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="create-model-input-data">Create model input data<a class="anchor" aria-label="anchor" href="#create-model-input-data"></a>
 </h3>
-<p><code>{r, echo = TRUE} input &lt;- create_input_data(   population = fso_pop,   births = fso_birth |&gt;      dplyr::filter(spatial_unit %in% c("Aarau", "Frauenfeld", "Stadt Zürich")),   year_first = 2011,   year_last = 2023,   age_fert_min = 15,   age_fert_max = 49,   fert_hist_years = 3,   binational = TRUE )</code></p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">input</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_input_data.html">create_input_data</a></span><span class="op">(</span></span>
+<span>  population <span class="op">=</span> <span class="va">fso_pop</span>,</span>
+<span>  births <span class="op">=</span> <span class="va">fso_birth</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">spatial_unit</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Aarau"</span>, <span class="st">"Frauenfeld"</span>, <span class="st">"Stadt Zürich"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  year_first <span class="op">=</span> <span class="fl">2011</span>,</span>
+<span>  year_last <span class="op">=</span> <span class="fl">2023</span>,</span>
+<span>  age_fert_min <span class="op">=</span> <span class="fl">15</span>,</span>
+<span>  age_fert_max <span class="op">=</span> <span class="fl">49</span>,</span>
+<span>  fert_hist_years <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  binational <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span> </span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="tfr-total-fertility-rate-forecast">TFR (total fertility rate) forecast<a class="anchor" aria-label="anchor" href="#tfr-total-fertility-rate-forecast"></a>
 </h3>
-<p><code>{r, echo = TRUE} forecast_tfr &lt;- forecast_tfr_mab(   topic = "tfr",   topic_data = input$tfr,   trend_model = c(     model = "lm", start = 2024, end = 2026, trend_past = 7, trend_prop = 0.5   ),   temporal_model = c(     model = "cubic", start = 2027, end = 2055, trend_prop = 0.8, z0_prop = 0.7,     z1_prop = 0   ),   temporal_end = NA,   constant_model = c(model = "constant", start = 2056, end = 2075) )</code></p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">forecast_tfr</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/forecast_tfr_mab.html">forecast_tfr_mab</a></span><span class="op">(</span></span>
+<span>  topic <span class="op">=</span> <span class="st">"tfr"</span>,</span>
+<span>  topic_data <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">tfr</span>,</span>
+<span>  trend_model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    model <span class="op">=</span> <span class="st">"lm"</span>, start <span class="op">=</span> <span class="fl">2024</span>, end <span class="op">=</span> <span class="fl">2026</span>, trend_past <span class="op">=</span> <span class="fl">7</span>, trend_prop <span class="op">=</span> <span class="fl">0.5</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  temporal_model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    model <span class="op">=</span> <span class="st">"cubic"</span>, start <span class="op">=</span> <span class="fl">2027</span>, end <span class="op">=</span> <span class="fl">2055</span>, trend_prop <span class="op">=</span> <span class="fl">0.8</span>, z0_prop <span class="op">=</span> <span class="fl">0.7</span>,</span>
+<span>    z1_prop <span class="op">=</span> <span class="fl">0</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  temporal_end <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  constant_model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>model <span class="op">=</span> <span class="st">"constant"</span>, start <span class="op">=</span> <span class="fl">2056</span>, end <span class="op">=</span> <span class="fl">2075</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="mab-mean-age-of-the-mother-at-birth-forecast">MAB (mean age of the mother at birth) forecast<a class="anchor" aria-label="anchor" href="#mab-mean-age-of-the-mother-at-birth-forecast"></a>
 </h3>
-<p><code>{r, echo = TRUE} forecast_mab &lt;- forecast_tfr_mab(   topic = "mab",   topic_data = input$mab,   trend_model = c(     model = "lm", start = 2024, end = 2026, trend_past = 7, trend_prop = 0.5   ),   temporal_model = c(     model = "Bezier", start = 2027, end = 2055, trend_prop = 0.3, z0_prop = 0.7,     z1_prop = 0   ),   temporal_end = NA,   constant_model = c(model = "constant", start = 2056, end = 2075) )</code></p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">forecast_mab</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/forecast_tfr_mab.html">forecast_tfr_mab</a></span><span class="op">(</span></span>
+<span>  topic <span class="op">=</span> <span class="st">"mab"</span>,</span>
+<span>  topic_data <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">mab</span>,</span>
+<span>  trend_model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    model <span class="op">=</span> <span class="st">"lm"</span>, start <span class="op">=</span> <span class="fl">2024</span>, end <span class="op">=</span> <span class="fl">2026</span>, trend_past <span class="op">=</span> <span class="fl">7</span>, trend_prop <span class="op">=</span> <span class="fl">0.5</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  temporal_model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    model <span class="op">=</span> <span class="st">"Bezier"</span>, start <span class="op">=</span> <span class="fl">2027</span>, end <span class="op">=</span> <span class="fl">2055</span>, trend_prop <span class="op">=</span> <span class="fl">0.3</span>, z0_prop <span class="op">=</span> <span class="fl">0.7</span>,</span>
+<span>    z1_prop <span class="op">=</span> <span class="fl">0</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  temporal_end <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  constant_model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>model <span class="op">=</span> <span class="st">"constant"</span>, start <span class="op">=</span> <span class="fl">2056</span>, end <span class="op">=</span> <span class="fl">2075</span><span class="op">)</span></span>
+<span><span class="op">)</span> </span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="forecast-of-the-age-specific-fertility-rate">Forecast of the age-specific fertility rate<a class="anchor" aria-label="anchor" href="#forecast-of-the-age-specific-fertility-rate"></a>
 </h3>
-<p><code>{r, echo = TRUE} forecast_fer &lt;- forecast_fertility_rate(   fer_dat = input$fer,   tfr_dat = forecast_tfr,   mab_dat = forecast_mab,    year_begin = 2024,    year_end = 2075)</code></p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">forecast_fer</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/forecast_fertility_rate.html">forecast_fertility_rate</a></span><span class="op">(</span></span>
+<span>  fer_dat <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">fer</span>,</span>
+<span>  tfr_dat <span class="op">=</span> <span class="va">forecast_tfr</span>,</span>
+<span>  mab_dat <span class="op">=</span> <span class="va">forecast_mab</span>, </span>
+<span>  year_begin <span class="op">=</span> <span class="fl">2024</span>, </span>
+<span>  year_end <span class="op">=</span> <span class="fl">2075</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -183,5 +245,6 @@
 
 
 
-  </body>
+  
+</body>
 </html>

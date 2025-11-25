@@ -74,23 +74,74 @@ municipalities.
 
 ### Birth and population data
 
-`{r setup, message=FALSE, warning=FALSE} library(ggplot2) library(propopbirth) library(dplyr)`
+``` r
+library(ggplot2)
+library(propopbirth)
+library(dplyr)
+```
 
 ### Create model input data
 
-`{r, echo = TRUE} input <- create_input_data( population = fso_pop, births = fso_birth |> dplyr::filter(spatial_unit %in% c("Aarau", "Frauenfeld", "Stadt Zürich")), year_first = 2011, year_last = 2023, age_fert_min = 15, age_fert_max = 49, fert_hist_years = 3, binational = TRUE )`
+``` r
+input <- create_input_data(
+  population = fso_pop,
+  births = fso_birth |> 
+    dplyr::filter(spatial_unit %in% c("Aarau", "Frauenfeld", "Stadt Zürich")),
+  year_first = 2011,
+  year_last = 2023,
+  age_fert_min = 15,
+  age_fert_max = 49,
+  fert_hist_years = 3,
+  binational = TRUE
+) 
+```
 
 ### TFR (total fertility rate) forecast
 
-`{r, echo = TRUE} forecast_tfr <- forecast_tfr_mab( topic = "tfr", topic_data = input$tfr, trend_model = c( model = "lm", start = 2024, end = 2026, trend_past = 7, trend_prop = 0.5 ), temporal_model = c( model = "cubic", start = 2027, end = 2055, trend_prop = 0.8, z0_prop = 0.7, z1_prop = 0 ), temporal_end = NA, constant_model = c(model = "constant", start = 2056, end = 2075) )`
+``` r
+forecast_tfr <- forecast_tfr_mab(
+  topic = "tfr",
+  topic_data = input$tfr,
+  trend_model = c(
+    model = "lm", start = 2024, end = 2026, trend_past = 7, trend_prop = 0.5
+  ),
+  temporal_model = c(
+    model = "cubic", start = 2027, end = 2055, trend_prop = 0.8, z0_prop = 0.7,
+    z1_prop = 0
+  ),
+  temporal_end = NA,
+  constant_model = c(model = "constant", start = 2056, end = 2075)
+)
+```
 
 ### MAB (mean age of the mother at birth) forecast
 
-`{r, echo = TRUE} forecast_mab <- forecast_tfr_mab( topic = "mab", topic_data = input$mab, trend_model = c( model = "lm", start = 2024, end = 2026, trend_past = 7, trend_prop = 0.5 ), temporal_model = c( model = "Bezier", start = 2027, end = 2055, trend_prop = 0.3, z0_prop = 0.7, z1_prop = 0 ), temporal_end = NA, constant_model = c(model = "constant", start = 2056, end = 2075) )`
+``` r
+forecast_mab <- forecast_tfr_mab(
+  topic = "mab",
+  topic_data = input$mab,
+  trend_model = c(
+    model = "lm", start = 2024, end = 2026, trend_past = 7, trend_prop = 0.5
+  ),
+  temporal_model = c(
+    model = "Bezier", start = 2027, end = 2055, trend_prop = 0.3, z0_prop = 0.7,
+    z1_prop = 0
+  ),
+  temporal_end = NA,
+  constant_model = c(model = "constant", start = 2056, end = 2075)
+) 
+```
 
 ### Forecast of the age-specific fertility rate
 
-`{r, echo = TRUE} forecast_fer <- forecast_fertility_rate( fer_dat = input$fer, tfr_dat = forecast_tfr, mab_dat = forecast_mab, year_begin = 2024, year_end = 2075)`
+``` r
+forecast_fer <- forecast_fertility_rate(
+  fer_dat = input$fer,
+  tfr_dat = forecast_tfr,
+  mab_dat = forecast_mab, 
+  year_begin = 2024, 
+  year_end = 2075)
+```
 
 ## Acknowledgment
 
