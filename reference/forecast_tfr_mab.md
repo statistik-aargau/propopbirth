@@ -27,7 +27,7 @@ forecast_tfr_mab(
   data frame, input data tailored to the topic with variables:
   `spatial_unit`, `nat`, `year`, either `tfr` or `mab`. This data is
   obtained by the function
-  [`create_input_data()`](https://statistik-aargau.github.io/propopbirth_test/reference/create_input_data.md).
+  [`create_input_data()`](https://statistik-aargau.github.io/propopbirth/reference/create_input_data.md).
   Columns for `spatial_unit` and/or `nat` are optional.
 
 - trend_model:

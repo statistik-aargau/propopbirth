@@ -29,7 +29,7 @@ time periods
 In the original FSO model, for the trend model an **ARIMA model** is
 used for the trend period. Depending on the structure of the past TFR
 and MAB data, the ARIMA forecast is not always stable. Therefore, in
-[propopbirth](https://statistik-aargau.github.io/propopbirth_test/) a
+[propopbirth](https://statistik-aargau.github.io/propopbirth/) a
 **linear model** can be used as an alternative to the ARIMA model.
 
 If an `lm` model is used, the window of past years (`trend_past`) and
@@ -49,7 +49,7 @@ determined by the cantons. For the cantonal forecasts this is
 manageable. However, this is often not possible or meaningful
 (e.g. forecasts for many municipalities or other spatial units).
 Therefore, we provide in
-[propopbirth](https://statistik-aargau.github.io/propopbirth_test/) an
+[propopbirth](https://statistik-aargau.github.io/propopbirth/) an
 additional **data-driven approach**. In this approach, the target points
 of the temporal period (point C in the figure below) are derived using
 the trend period model. A parameter determines, how much of the trend

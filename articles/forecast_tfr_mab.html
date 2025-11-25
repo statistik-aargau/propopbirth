@@ -99,7 +99,7 @@ time periods
 <p>In the original FSO model, for the trend model an <strong>ARIMA
 model</strong> is used for the trend period. Depending on the structure
 of the past TFR and MAB data, the ARIMA forecast is not always stable.
-Therefore, in <a href="https://statistik-aargau.github.io/propopbirth_test/">propopbirth</a> a <strong>linear model</strong>
+Therefore, in <a href="https://statistik-aargau.github.io/propopbirth/">propopbirth</a> a <strong>linear model</strong>
 can be used as an alternative to the ARIMA model.</p>
 <p>If an <code>lm</code> model is used, the window of past years
 (<code>trend_past</code>) and the proportional amount of past years used
@@ -163,7 +163,7 @@ MAB at the end of the temporal period. These target points are more or
 less subjectively determined by the cantons. For the cantonal forecasts
 this is manageable. However, this is often not possible or meaningful
 (e.g. forecasts for many municipalities or other spatial units).
-Therefore, we provide in <a href="https://statistik-aargau.github.io/propopbirth_test/">propopbirth</a> an additional
+Therefore, we provide in <a href="https://statistik-aargau.github.io/propopbirth/">propopbirth</a> an additional
 <strong>data-driven approach</strong>. In this approach, the target
 points of the temporal period (point C in the figure below) are derived
 using the trend period model. A parameter determines, how much of the
@@ -296,7 +296,7 @@ period</td>
 <h3 id="create-input-data">Create input data<a class="anchor" aria-label="anchor" href="#create-input-data"></a>
 </h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://statistik-aargau.github.io/propopbirth_test/">propopbirth</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://statistik-aargau.github.io/propopbirth/">propopbirth</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span></span>

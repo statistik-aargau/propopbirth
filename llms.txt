@@ -5,7 +5,7 @@ methodology.
 
 ## Overview
 
-The [propopbirth](https://statistik-aargau.github.io/propopbirth_test/)
+The [propopbirth](https://statistik-aargau.github.io/propopbirth/)
 package consists of several modules: First, model input data are
 calculated. Second, TFR (total fertility rate) and MAB (mean age of the
 mother at birth) are predicted. Third, TFR and MAB forecasts are used to
@@ -14,13 +14,13 @@ predict the age-specific birth rates.
 ## Population projections
 
 The output from
-[propopbirth](https://statistik-aargau.github.io/propopbirth_test/) is
-fully compatible with
+[propopbirth](https://statistik-aargau.github.io/propopbirth/) is fully
+compatible with
 [`{propop} - An R package for population projections in R`](https://statistik-aargau.github.io/propop/index.html).
 `{propop}` needs future birth rates as input. This is only available at
 the FSO at cantonal level. With
-[propopbirth](https://statistik-aargau.github.io/propopbirth_test/) the
-birth rates can also be calculated for other spatial units or with own
+[propopbirth](https://statistik-aargau.github.io/propopbirth/) the birth
+rates can also be calculated for other spatial units or with own
 hypothesis.
 
 ## Installation
@@ -59,11 +59,11 @@ meaningful.
 
 Currently, FSO birth data is not accessible with the required variables.
 For this reason, the birth data is included in the
-[propopbirth](https://statistik-aargau.github.io/propopbirth_test/)
-package. As soon as the birth data is publicly accessible (similar to
-population data), it will be directly accessible in
-[propopbirth](https://statistik-aargau.github.io/propopbirth_test/) .
-This will allow a more flexible selection of spatial units (not only
+[propopbirth](https://statistik-aargau.github.io/propopbirth/) package.
+As soon as the birth data is publicly accessible (similar to population
+data), it will be directly accessible in
+[propopbirth](https://statistik-aargau.github.io/propopbirth/) . This
+will allow a more flexible selection of spatial units (not only
 municipalities, but also districts).
 
 ## Examples
@@ -97,25 +97,24 @@ municipalities.
 We acknowledge the Federal Statistical Office (FSO) for providing their
 SAS code used for fertility projections. And we are grateful to the FSO
 for giving the permission to use the birth data within the
-[propopbirth](https://statistik-aargau.github.io/propopbirth_test/)
-package.
+[propopbirth](https://statistik-aargau.github.io/propopbirth/) package.
 
 # Package index
 
 ## All functions
 
-- [`create_input_data()`](https://statistik-aargau.github.io/propopbirth_test/reference/create_input_data.md)
+- [`create_input_data()`](https://statistik-aargau.github.io/propopbirth/reference/create_input_data.md)
   : Create model input data
-- [`forecast_fertility_rate()`](https://statistik-aargau.github.io/propopbirth_test/reference/forecast_fertility_rate.md)
+- [`forecast_fertility_rate()`](https://statistik-aargau.github.io/propopbirth/reference/forecast_fertility_rate.md)
   : Forecast age-specific fertility rates.
-- [`forecast_tfr_mab()`](https://statistik-aargau.github.io/propopbirth_test/reference/forecast_tfr_mab.md)
+- [`forecast_tfr_mab()`](https://statistik-aargau.github.io/propopbirth/reference/forecast_tfr_mab.md)
   : Forecast total fertility rate (TFR) or mean age of the mother at
   birth (MAB)
-- [`fso_birth`](https://statistik-aargau.github.io/propopbirth_test/reference/fso_birth.md)
+- [`fso_birth`](https://statistik-aargau.github.io/propopbirth/reference/fso_birth.md)
   : FSO data for births
-- [`fso_pop`](https://statistik-aargau.github.io/propopbirth_test/reference/fso_pop.md)
+- [`fso_pop`](https://statistik-aargau.github.io/propopbirth/reference/fso_pop.md)
   : Population data from the Federal Statistical Office
-- [`get_population_data()`](https://statistik-aargau.github.io/propopbirth_test/reference/get_population_data.md)
+- [`get_population_data()`](https://statistik-aargau.github.io/propopbirth/reference/get_population_data.md)
   : Get FSO population (females at 'fertile' age)
 
 # Articles
@@ -123,8 +122,8 @@ package.
 ### All vignettes
 
 - [Fertility rate
-  forecast](https://statistik-aargau.github.io/propopbirth_test/articles/forecast_fertility_rate.md):
+  forecast](https://statistik-aargau.github.io/propopbirth/articles/forecast_fertility_rate.md):
 - [TFR and MAB
-  forecast](https://statistik-aargau.github.io/propopbirth_test/articles/forecast_tfr_mab.md):
+  forecast](https://statistik-aargau.github.io/propopbirth/articles/forecast_tfr_mab.md):
 - [Prepare input
-  data](https://statistik-aargau.github.io/propopbirth_test/articles/prepare_data.md):
+  data](https://statistik-aargau.github.io/propopbirth/articles/prepare_data.md):

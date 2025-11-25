@@ -36,10 +36,10 @@ variables:
 
 Currently, the FSO does not publish historical births data as open data.
 However, we have received permission to use and publish the data in
-[propopbirth](https://statistik-aargau.github.io/propopbirth_test/). In
-the [propopbirth](https://statistik-aargau.github.io/propopbirth_test/)
-package, the original data from the FSO is preprocessed, adapting column
-names and factor levels, and the municipality numbers are replaced by
+[propopbirth](https://statistik-aargau.github.io/propopbirth/). In the
+[propopbirth](https://statistik-aargau.github.io/propopbirth/) package,
+the original data from the FSO is preprocessed, adapting column names
+and factor levels, and the municipality numbers are replaced by
 [municipality
 names](https://www.agvchapp.bfs.admin.ch/de/state/results?SnapshotDate=1.1.2023).
 
@@ -58,7 +58,7 @@ fso_birth |>
 
 Historical population records from the FSO can be obtained with the
 function
-[`propopbirth::get_population_data`](https://statistik-aargau.github.io/propopbirth_test/reference/get_population_data.md),
+[`propopbirth::get_population_data`](https://statistik-aargau.github.io/propopbirth/reference/get_population_data.md),
 defining time span, spatial units and further specific arguments:
 
 ``` r
