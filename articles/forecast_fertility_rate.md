@@ -90,7 +90,9 @@ ggplot(forecast_tfr) +
   theme_minimal()
 ```
 
-![](forecast_fertility_rate_files/figure-html/unnamed-chunk-4-1.png)
+![The fertility rate forecast starts with the prediction of the total
+fertility rate (TFR); this forecast is shown by spatial unit and
+nationality.](forecast_fertility_rate_files/figure-html/unnamed-chunk-4-1.png)
 
 MAB forecast
 
@@ -118,7 +120,9 @@ ggplot(forecast_mab) +
   theme_minimal()
 ```
 
-![](forecast_fertility_rate_files/figure-html/unnamed-chunk-6-1.png)
+![After the TFR the MAB forecast is needed; the MAB prediction is shown
+by spatial unit and
+nationality.](forecast_fertility_rate_files/figure-html/unnamed-chunk-6-1.png)
 
 Forecast of the age-specific fertility rate
 
@@ -152,7 +156,9 @@ forecast_fer |>
   facet_grid(nat ~ spatial_unit)
 ```
 
-![](forecast_fertility_rate_files/figure-html/unnamed-chunk-9-1.png)
+![The age-specific fertility rates are shown by year (past and future),
+age (selected age years), spatial unit, and
+nationality.](forecast_fertility_rate_files/figure-html/unnamed-chunk-9-1.png)
 
 Plot with age on x-axis
 
@@ -166,4 +172,6 @@ forecast_fer |>
   facet_grid(nat ~ spatial_unit)
 ```
 
-![](forecast_fertility_rate_files/figure-html/unnamed-chunk-10-1.png)
+![The age-specific fertility rates are shown by year (past and future,
+selected years), age, spatial unit, and
+nationality.](forecast_fertility_rate_files/figure-html/unnamed-chunk-10-1.png)

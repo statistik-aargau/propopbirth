@@ -158,7 +158,11 @@ ggplot(forecast_tfr_example1) +
   theme_minimal()
 ```
 
-![](forecast_tfr_mab_files/figure-html/unnamed-chunk-5-1.png)
+![As a first example the forecast of the total fertility rate (TFR) by
+spatial unit and nationality is shown. In this example the prediction is
+modelled with given target points, a linear trend model and a cubic
+function for the temporal
+period.](forecast_tfr_mab_files/figure-html/unnamed-chunk-5-1.png)
 
 ### Example 2
 
@@ -197,7 +201,11 @@ ggplot(forecast_tfr_example2) +
   theme_minimal()
 ```
 
-![](forecast_tfr_mab_files/figure-html/unnamed-chunk-7-1.png)
+![As a second example the forecast of the total fertility rate (TFR) by
+spatial unit and nationality is shown. In this example the prediction is
+modelled with a data-driven approach, a ARIMA trend model and the Bezier
+function for the temporal
+period.](forecast_tfr_mab_files/figure-html/unnamed-chunk-7-1.png)
 
 ### Example 3
 
@@ -233,4 +241,8 @@ ggplot(forecast_tfr_example3) +
   theme_minimal()
 ```
 
-![](forecast_tfr_mab_files/figure-html/unnamed-chunk-9-1.png)
+![As a third example the forecast mean age of the mother at birth (MAB)
+by spatial unit and nationality is shown. In this example the prediction
+is modelled with a data-driven approach, a linear trend model and the
+Bezier function for the temporal
+period.](forecast_tfr_mab_files/figure-html/unnamed-chunk-9-1.png)

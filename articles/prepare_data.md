@@ -134,7 +134,9 @@ ggplot(input$tfr) +
   theme_minimal()
 ```
 
-![](prepare_data_files/figure-html/unnamed-chunk-5-1.png)
+![For historical data, the development of the total fertility rate (TFR)
+over time is displayed by spatial unit and
+nationality.](prepare_data_files/figure-html/unnamed-chunk-5-1.png)
 
 ``` r
 input$tfr |> 
@@ -150,7 +152,9 @@ ggplot(input$mab) +
   theme_minimal()
 ```
 
-![](prepare_data_files/figure-html/unnamed-chunk-7-1.png)
+![For historical data, the development of the mean age of the mother at
+birth (MAB) over time is displayed by spatial unit and
+nationality.](prepare_data_files/figure-html/unnamed-chunk-7-1.png)
 
 ``` r
 input$mab |> 
@@ -166,7 +170,9 @@ ggplot(input$fer) +
   theme_minimal()
 ```
 
-![](prepare_data_files/figure-html/unnamed-chunk-9-1.png)
+![For historical data, the age-specific fertility rate is displayed by
+spatial unit and nationality (average over a selected number of
+years).](prepare_data_files/figure-html/unnamed-chunk-9-1.png)
 
 ``` r
 input$fer |> 
