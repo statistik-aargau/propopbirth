@@ -21,7 +21,7 @@ test_that("snapshot test for temporal_Bezier()", {
     z1 = c(0, -0, 0, -0, 0, 0),
   )
   
-  expect_snapshot(constructive::construct(
+  expect_snapshot(dput(
     temporal_Bezier(
       points_dat = points_dat,
       year_start = 2027,
