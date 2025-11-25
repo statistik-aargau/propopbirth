@@ -44,7 +44,7 @@ test_that("snapshot test for temporal_points()", {
     category = rep("lm", 64L),
   )
   
-  expect_snapshot(constructive::construct(
+  expect_snapshot(dput(
     temporal_points(
       input_past = input_data,
       input_trend = trend_data,

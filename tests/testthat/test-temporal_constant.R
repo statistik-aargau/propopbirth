@@ -21,7 +21,7 @@ test_that("snapshot test for temporal_constant()", {
     z1 = c(0, -0, 0, -0, 0, 0),
   )
   
-  expect_snapshot(constructive::construct(
+  expect_snapshot(dput(
     temporal_constant(
       points_dat = points_dat,
       year_start = 2027,

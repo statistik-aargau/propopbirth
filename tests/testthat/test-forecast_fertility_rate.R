@@ -135,5 +135,5 @@ test_that("Snapshot tests for forecasting fertility rate", {
       year_end = 2075
     )
   
-    expect_snapshot(constructive::construct(fertility_forecast))
+    expect_snapshot(dput(fertility_forecast))
 })

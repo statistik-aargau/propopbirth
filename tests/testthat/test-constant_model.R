@@ -25,7 +25,7 @@ test_that("Tests for constant_model()", {
     category = rep("Bezier", 58L),
   )
 
-  expect_snapshot(constructive::construct(
+  expect_snapshot(dput(
     constant_model(
       in_dat = temporal_dat,
       year_start = 2065,
