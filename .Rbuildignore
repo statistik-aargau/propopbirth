@@ -1,6 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-biRth.r
 ^\.github$
 ^LICENSE\.md$
 ^doc$
@@ -8,3 +7,4 @@ biRth.r
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^data-raw$
