@@ -15,7 +15,7 @@ test_that("snapshot test for trend_lm()", {
     ),
   )
 
-  expect_snapshot(constructive::construct(
+  expect_snapshot(dput(
     trend_lm(
       input_lm = input_data,
       year_start = 2024,
