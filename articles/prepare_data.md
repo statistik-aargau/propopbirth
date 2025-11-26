@@ -129,9 +129,11 @@ input <- create_input_data(
 
 ``` r
 ggplot(input$tfr) +
-  geom_line(aes(x = year, y = tfr, color = nat)) +
+  geom_line(aes(x = year, y = tfr, color = nat), linewidth = 0.7) +
+  scale_color_manual(values = c("#ffa81f", "#A05388")) +
+  labs(color = "Nationality", y = "TFR") +
   facet_wrap(~ spatial_unit) +
-  theme_minimal()
+  theme_bw()
 ```
 
 ![For historical data, the development of the total fertility rate (TFR)
@@ -147,9 +149,11 @@ input$tfr |>
 
 ``` r
 ggplot(input$mab) +
-  geom_line(aes(x = year, y = mab, color = nat)) +
-  facet_wrap(~ spatial_unit)+
-  theme_minimal()
+  geom_line(aes(x = year, y = mab, color = nat), linewidth = 0.7) +
+  scale_color_manual(values = c("#ffa81f", "#A05388")) +
+  labs(color = "Nationality", y = "MAB") +
+  facet_wrap(~ spatial_unit) +
+  theme_bw()
 ```
 
 ![For historical data, the development of the mean age of the mother at
@@ -165,9 +169,11 @@ input$mab |>
 
 ``` r
 ggplot(input$fer) +
-  geom_line(aes(x = age, y = fer, color = nat)) +
-  facet_wrap(~ spatial_unit)+
-  theme_minimal()
+  geom_line(aes(x = age, y = fer, color = nat), linewidth = 0.7) +
+  scale_color_manual(values = c("#ffa81f", "#A05388")) +
+  labs(color = "Nationality", y = "Fertility rate") +
+  facet_wrap(~ spatial_unit) +
+  theme_bw()
 ```
 
 ![For historical data, the age-specific fertility rate is displayed by

@@ -154,8 +154,10 @@ forecast_tfr_example1 <- forecast_tfr_mab(
 ggplot(forecast_tfr_example1) +
   geom_line(aes(x = year, y = tfr, color = category)) +
   geom_point(aes(x = year, y = tfr, color = category)) +
-  facet_grid(nat ~ spatial_unit) +
-  theme_minimal()
+  scale_color_manual(values = c("#ffe562", "#A05388", "#ffa81f", "#007AB8")) +
+  labs(color = "Model", y = "TFR") +
+  facet_wrap(nat ~ spatial_unit) +
+  theme_bw()
 ```
 
 ![As a first example the forecast of the total fertility rate (TFR) by
@@ -197,8 +199,10 @@ forecast_tfr_example2 <- forecast_tfr_mab(
 ggplot(forecast_tfr_example2) +
   geom_line(aes(x = year, y = tfr, color = category)) +
   geom_point(aes(x = year, y = tfr, color = category)) +
-  facet_grid(nat ~ spatial_unit) +
-  theme_minimal()
+  scale_color_manual(values = c("#ffa81f", "#A05388", "#ffe562", "#007AB8")) +
+  labs(color = "Model", y = "TFR") +
+  facet_wrap(nat ~ spatial_unit) +
+  theme_bw()
 ```
 
 ![As a second example the forecast of the total fertility rate (TFR) by
@@ -237,8 +241,10 @@ forecast_tfr_example3 <- forecast_tfr_mab(
 ggplot(forecast_tfr_example3) +
   geom_line(aes(x = year, y = mab, color = category)) +
   geom_point(aes(x = year, y = mab, color = category)) +
-  facet_grid(nat ~ spatial_unit) +
-  theme_minimal()
+  scale_color_manual(values = c("#A05388", "#ffe562", "#ffa81f", "#007AB8")) +
+  labs(color = "Model", y = "MAB") +
+  facet_wrap(nat ~ spatial_unit) +
+  theme_bw()
 ```
 
 ![As a third example the forecast mean age of the mother at birth (MAB)

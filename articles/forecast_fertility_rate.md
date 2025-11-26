@@ -89,8 +89,10 @@ forecast_tfr <- forecast_tfr_mab(
 ggplot(forecast_tfr) +
   geom_line(aes(x = year, y = tfr, color = category)) +
   geom_point(aes(x = year, y = tfr, color = category)) +
-  facet_grid(nat ~ spatial_unit) +
-  theme_minimal()
+  scale_color_manual(values = c("#ffe562", "#A05388", "#ffa81f", "#007AB8")) +
+  labs(color = "Model", y = "TFR") +
+  facet_wrap(nat ~ spatial_unit) +
+  theme_bw()
 ```
 
 ![The fertility rate forecast starts with the prediction of the total
@@ -119,8 +121,10 @@ forecast_mab <- forecast_tfr_mab(
 ggplot(forecast_mab) +
   geom_line(aes(x = year, y = mab, color = category)) +
   geom_point(aes(x = year, y = mab, color = category)) +
-  facet_grid(nat ~ spatial_unit) +
-  theme_minimal()
+  scale_color_manual(values = c("#A05388", "#ffe562", "#ffa81f", "#007AB8")) +
+  labs(color = "Model", y = "MAB") +
+  facet_wrap(nat ~ spatial_unit) +
+  theme_bw()
 ```
 
 ![After the TFR the MAB forecast is needed; the MAB prediction is shown
@@ -154,9 +158,18 @@ forecast_fer |>
   filter(age %% 5 == 0) |>
   mutate(age = factor(age)) |>
   ggplot() +
-  geom_vline(xintercept = y_last + 1, linetype = 2) +
-  geom_line(aes(year, birth_rate, color = age)) +
-  facet_grid(nat ~ spatial_unit)
+  geom_vline(xintercept = y_last + 1, linetype = 2, color = "#333333") +
+  geom_line(aes(year, birth_rate, color = age), linewidth = 0.5) +
+  scale_color_manual(values = c(
+    "#ffe562", "#c6ecae", "#ffa81f", "#007AB8", "#FF82a9", "#96D4FF", "#A05388"
+  )) +
+  labs(color = "Model", y = "Age") +
+  facet_wrap(nat ~ spatial_unit) +
+  theme_bw() +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank()
+  )
 ```
 
 ![The age-specific fertility rates are shown by year (past and future),
@@ -171,8 +184,17 @@ forecast_fer |>
   filter(year %% 10 == 0) |>
   mutate(year = factor(year)) |>
   ggplot() +
-  geom_line(aes(age, birth_rate, color = year)) +
-  facet_grid(nat ~ spatial_unit)
+  geom_line(aes(age, birth_rate, color = year), linewidth = 0.5) +
+  scale_color_manual(values = c(
+     "#007AB8", "#ffa81f", "#A05388", "#FF82a9", "#ffe562", "#c6ecae"
+  )) +
+  labs(color = "Model", y = "Year") +
+  facet_wrap(nat ~ spatial_unit) +
+  theme_bw() +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank()
+  )
 ```
 
 ![The age-specific fertility rates are shown by year (past and future,
