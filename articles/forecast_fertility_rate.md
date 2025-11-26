@@ -12,8 +12,11 @@ The age-specific fertility rate forecast is modeled in four steps:
   regression is fitted to $y*$ vs. $x$ (i.e. age + 0.5). The parameters
   $a_{0}$, …, $a_{5}$ of the regression are estimated.
 
-\$\$ y = \log(-\log(y^\*)) \\ x = age + 0.5 \\ y = a_0 + a_1 x + a_2
-x^2 + a_3 x^3 + a_4 x^4 + a_5 x^5 \$\$
+$$y = \log\left( - \log\left( y^{*} \right) \right)$$
+
+$$x = age + 0.5$$
+
+$$y = a_{0} + a_{1}x + a_{2}x^{2} + a_{3}x^{3} + a_{4}x^{4} + a_{5}x^{5}$$
 
 - **Optimization**: In this step, the previously calculated MAB forecast
   is used (MAB prediction for each year in the future). From the
