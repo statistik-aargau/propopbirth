@@ -53,6 +53,12 @@ get_population_data <- function(
   assertthat::assert_that(is.numeric(age_fert_max),
     msg = "The argument `age_fert_max` must be numeric."
   )
+  assertthat::assert_that(is.character(spatial_code),
+    msg = "The argument `spatial_code` must be character."
+  )
+  assertthat::assert_that(is.character(spatial_unit),
+    msg = "The argument `spatial_unit` must be character."
+  )
   assertthat::assert_that(is.logical(binational),
     msg = "The argument `binational` must be logical (TRUE or FALSE)."
   )
