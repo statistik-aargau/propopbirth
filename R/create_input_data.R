@@ -229,7 +229,7 @@ create_input_data <- function(
   # (at the very end of the fertility rate forecast)
   fer_y_out <- fer_y |>
     dplyr::rename(birth_rate = fer) |>
-    dplyr::select(cols_out)
+    dplyr::select(dplyr::all_of(cols_out))
 
   return(list(tfr = tfr, mab = mab, fer = fer, fer_y = fer_y_out))
 }
