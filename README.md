@@ -80,7 +80,7 @@ library(dplyr)
 input <- create_input_data(
   population = fso_pop,
   births = fso_birth |> 
-    dplyr::filter(spatial_unit %in% c("Aarau", "Frauenfeld", "Stadt Zürich")),
+    dplyr::filter(spatial_unit %in% c("Aarau", "Uster", "Stadt Zürich")),
   year_first = 2011,
   year_last = 2023,
   age_fert_min = 15,

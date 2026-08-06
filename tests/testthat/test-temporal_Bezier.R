@@ -2,7 +2,7 @@ test_that("snapshot test for temporal_Bezier()", {
   
   # Prepare input ----
   points_dat <- tibble::tibble(
-    spatial_unit = rep(c("Aarau", "Frauenfeld", "Stadt Z\U{FC}rich"), each = 2L),
+    spatial_unit = rep(c("Aarau", "Uster", "Stadt Z\U{FC}rich"), each = 2L),
     nat = rep(c("ch", "int"), 3),
     x0 = rep(2027, 6L),
     y0 = c(

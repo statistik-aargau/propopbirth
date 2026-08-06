@@ -23,8 +23,8 @@
 #'   year_last = 2023,
 #'   age_fert_min = 15,
 #'   age_fert_max = 49,
-#'   spatial_code = c("0261", "4566", "4001"),
-#'   spatial_unit = c("Stadt Zuerich", "Frauenfeld", "Aarau"),
+#'   spatial_code = c("0261", "0198", "4001"),
+#'   spatial_unit = c("Stadt Zuerich", "Uster", "Aarau"),
 #'   binational = TRUE
 #' )
 get_population_data <- function(
@@ -100,7 +100,6 @@ get_population_data <- function(
   # spatial units: query
   query_spatial <- spatial_selected |>
     dplyr::pull(values)
-
 
   # Get age -----------------------------------------------------------------
   query_age <- fso_metadata |>

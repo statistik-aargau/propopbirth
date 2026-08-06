@@ -63,7 +63,7 @@ Create input data
 input <- create_input_data(
   population = fso_pop,
   births = fso_birth |>
-    dplyr::filter(spatial_unit %in% c("Aarau", "Frauenfeld", "Stadt Zürich")),
+    dplyr::filter(spatial_unit %in% c("Aarau", "Uster", "Stadt Zürich")),
   year_first = 2011,
   year_last = 2023,
   age_fert_min = 15,
@@ -199,7 +199,7 @@ forecast_fer |>
   scale_color_manual(values = c(
      "#007AB8", "#ffa81f", "#A05388", "#FF82a9", "#ffe562", "#c6ecae"
   )) +
-  labs(color = "Model", y = "Year") +
+  labs(color = "Model", y = "Age-specific fertility rate") +
   facet_wrap(nat ~ spatial_unit) +
   theme_bw() +
   theme(
