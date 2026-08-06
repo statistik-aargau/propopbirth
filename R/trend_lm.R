@@ -14,13 +14,12 @@
 #'
 #' @noRd
 trend_lm <- function(
-  input_lm,
-  year_start,
-  year_end,
-  trend_past,
-  trend_prop,
-  digits_y = 3
-) {
+    input_lm,
+    year_start,
+    year_end,
+    trend_past,
+    trend_prop,
+    digits_y = 3) {
   # numeric input
   year_start <- as.numeric(year_start)
   year_end <- as.numeric(year_end)

@@ -22,13 +22,12 @@
 #' @autoglobal
 #'
 forecast_tfr_mab <- function(
-  topic,
-  topic_data,
-  trend_model,
-  temporal_model,
-  temporal_end = NA,
-  constant_model
-) {
+    topic,
+    topic_data,
+    trend_model,
+    temporal_model,
+    temporal_end = NA,
+    constant_model) {
   # checks ------------------------------------------------------------------
   ## topic ------------------------------------------------------------------
   assertthat::assert_that(is.character(topic),

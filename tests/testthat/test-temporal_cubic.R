@@ -1,5 +1,4 @@
 test_that("snapshot test for temporal_cubic()", {
-  
   # Prepare input ----
   points_dat <- tibble::tibble(
     spatial_unit = rep(c("Aarau", "Frauenfeld", "Stadt Z\U{FC}rich"), each = 2L),
@@ -20,7 +19,7 @@ test_that("snapshot test for temporal_cubic()", {
     ),
     z1 = c(0, -0, 0, -0, 0, 0),
   )
-  
+
   expect_snapshot(dput(
     temporal_cubic(
       points_dat = points_dat,

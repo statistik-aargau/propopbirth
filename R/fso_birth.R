@@ -1,7 +1,7 @@
 #' FSO data for births
 #'
 #' @description Data was retrieved from the FSO.
-#' 
+#'
 #' @format A data frame with 437054 rows and 5 variables:
 #' \describe{
 #'   \item{year}{year within the range 2010-2023}
@@ -12,11 +12,11 @@
 #'  }
 #'
 #' @name fso_birth
-#' 
+#'
 #' @docType data
-#' 
+#'
 #' @keywords datasets
-#' 
+#'
 #' @examples
 #' dplyr::glimpse(fso_birth)
 #'

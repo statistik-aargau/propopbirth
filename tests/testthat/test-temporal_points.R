@@ -1,5 +1,4 @@
 test_that("snapshot test for temporal_points()", {
-  
   # Prepare input ----
   input_data <- tibble::tibble(
     spatial_unit = rep("Aarau", 26L),
@@ -15,7 +14,7 @@ test_that("snapshot test for temporal_points()", {
       1.9986812756844305, 1.8652936716833775, 1.8814830581283348
     ),
   )
-  
+
   trend_data <- tibble::tibble(
     spatial_unit = rep("Aarau", 64L),
     nat = rep(c("ch", "int"), 32),
@@ -43,7 +42,7 @@ test_that("snapshot test for temporal_points()", {
     ),
     category = rep("lm", 64L),
   )
-  
+
   expect_snapshot(dput(
     temporal_points(
       input_past = input_data,

@@ -109,9 +109,9 @@ The parameter `fert_hist_years` determines how many years are used to calculate 
 
 ```{r}
 input <- create_input_data(
-  population = fso_pop |> 
+  population = fso_pop |>
     dplyr::filter(spatial_unit %in% c("Aarau", "Stadt Zürich")),
-  births = fso_birth |> 
+  births = fso_birth |>
     dplyr::filter(spatial_unit %in% c("Aarau", "Stadt Zürich")),
   year_first = 2011,
   year_last = 2023,
@@ -119,26 +119,26 @@ input <- create_input_data(
   age_fert_max = 49,
   fert_hist_years = 3,
   binational = TRUE
-) 
+)
 ```
 
 ### TFR
 
 ```{r, fig.width=7, fig.height=3}
 #| fig.alt: >
-#|   For historical data, the development of the total fertility rate (TFR) over 
+#|   For historical data, the development of the total fertility rate (TFR) over
 #|   time is displayed by spatial unit and nationality.
 
 ggplot(input$tfr) +
   geom_line(aes(x = year, y = tfr, color = nat), linewidth = 0.7) +
   scale_color_manual(values = c("#ffa81f", "#A05388")) +
   labs(color = "Nationality", y = "TFR") +
-  facet_wrap(~ spatial_unit) +
+  facet_wrap(~spatial_unit) +
   theme_bw()
 ```
 
 ```{r}
-input$tfr |> 
+input$tfr |>
   DT::datatable(options = list(pageLength = 5))
 ```
 
@@ -146,19 +146,19 @@ input$tfr |>
 
 ```{r, fig.width=7, fig.height=3}
 #| fig.alt: >
-#|   For historical data, the development of the mean age of the mother at 
+#|   For historical data, the development of the mean age of the mother at
 #|   birth (MAB) over time is displayed by spatial unit and nationality.
 
 ggplot(input$mab) +
   geom_line(aes(x = year, y = mab, color = nat), linewidth = 0.7) +
   scale_color_manual(values = c("#ffa81f", "#A05388")) +
   labs(color = "Nationality", y = "MAB") +
-  facet_wrap(~ spatial_unit) +
+  facet_wrap(~spatial_unit) +
   theme_bw()
 ```
 
 ```{r}
-input$mab |> 
+input$mab |>
   DT::datatable(options = list(pageLength = 5))
 ```
 
@@ -166,18 +166,18 @@ input$mab |>
 
 ```{r, fig.width=7, fig.height=3}
 #| fig.alt: >
-#|   For historical data, the age-specific fertility rate is displayed by 
+#|   For historical data, the age-specific fertility rate is displayed by
 #|   spatial unit and nationality (average over a selected number of years).
 
 ggplot(input$fer) +
   geom_line(aes(x = age, y = fer, color = nat), linewidth = 0.7) +
   scale_color_manual(values = c("#ffa81f", "#A05388")) +
   labs(color = "Nationality", y = "Fertility rate") +
-  facet_wrap(~ spatial_unit) +
+  facet_wrap(~spatial_unit) +
   theme_bw()
 ```
 
 ```{r}
-input$fer |> 
+input$fer |>
   DT::datatable(options = list(pageLength = 5))
 ```

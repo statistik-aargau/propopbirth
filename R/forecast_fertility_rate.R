@@ -15,15 +15,14 @@
 #' @autoglobal
 #'
 forecast_fertility_rate <- function(
-  fer_dat,
-  tfr_dat,
-  mab_dat,
-  year_start,
-  year_end,
-  maxit = 1000,
-  abstol = 0.001,
-  digits_birth_rate = 5
-) {
+    fer_dat,
+    tfr_dat,
+    mab_dat,
+    year_start,
+    year_end,
+    maxit = 1000,
+    abstol = 0.001,
+    digits_birth_rate = 5) {
   # checks ------------------------------------------------------------------
   ## fertility data ---------------------------------------------------------
   assertthat::assert_that("spatial_unit" %in% names(fer_dat),
