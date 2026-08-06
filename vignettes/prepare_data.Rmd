@@ -67,7 +67,7 @@ The data for three selected municipalities looks like this:
 data("fso_birth", package = "propopbirth")
 
 fso_birth |>
-  dplyr::filter(spatial_unit %in% c("Aarau", "Frauenfeld", "Stadt Zürich")) |>
+  dplyr::filter(spatial_unit %in% c("Aarau", "Uster", "Stadt Zürich")) |>
   DT::datatable(options = list(pageLength = 5))
 ```
 
@@ -82,8 +82,8 @@ fso_pop <- get_population_data(
   year_last = 2023,
   age_fert_min = 15,
   age_fert_max = 49,
-  spatial_code = c("4001", "4566", "0261"),
-  spatial_unit = c("Aarau", "Frauenfeld", "Stadt Zürich"),
+  spatial_code = c("4001", "0198", "0261"),
+  spatial_unit = c("Aarau", "Uster", "Stadt Zürich"),
   binational = TRUE
 )
 ```
@@ -109,9 +109,10 @@ The parameter `fert_hist_years` determines how many years are used to calculate 
 
 ```{r}
 input <- create_input_data(
-  population = fso_pop,
+  population = fso_pop |> 
+    dplyr::filter(spatial_unit %in% c("Aarau", "Stadt Zürich")),
   births = fso_birth |> 
-    dplyr::filter(spatial_unit %in% c("Aarau", "Frauenfeld", "Stadt Zürich")),
+    dplyr::filter(spatial_unit %in% c("Aarau", "Stadt Zürich")),
   year_first = 2011,
   year_last = 2023,
   age_fert_min = 15,
