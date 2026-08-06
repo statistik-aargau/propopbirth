@@ -233,5 +233,11 @@ forecast_fertility_rate <- function(
     dplyr::select(spatial_unit, nat, year, age, birth_rate) |>
     dplyr::arrange(spatial_unit, nat, year, age)
 
+  cli::cli_alert_success(paste0(
+    "Birth rate forecast complete for spatial units: ",
+    "{unique(birth_rate$spatial_unit)} and ",
+    "years {min(birth_rate$year)} to {max(birth_rate$year)}."
+  ))
+
   return(birth_rate)
 }
