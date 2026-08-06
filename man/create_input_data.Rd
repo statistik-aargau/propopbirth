@@ -31,7 +31,7 @@ spatial_unit, year, age, pop, with or without nat (nationality).}
 
 \item{age_fert_min}{numeric, minimum age (of 'fertile age').}
 
-\item{age_fert_max}{numeric, minimum age (of 'fertile age').}
+\item{age_fert_max}{numeric, maximum age (of 'fertile age').}
 
 \item{fert_hist_years}{how many years are used to calculate age-specific
 fertility rates?}
