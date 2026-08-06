@@ -62,6 +62,7 @@ get_population_data <- function(
     msg = "The argument `binational` must be logical (TRUE or FALSE)."
   )
   # Get metadata ------------------------------------------------------------
+  cli::cli_progress_step("Fetching FSO metadata for table {.val {number_fso}}")
   fso_metadata <- BFS::bfs_get_metadata(
     number_bfs = number_fso,
     language = "de"
@@ -196,6 +197,7 @@ get_population_data <- function(
     )
   )
 
+  cli::cli_progress_step("Querying FSO population data")
   # query
   fso_data_import <- BFS::bfs_get_data(
     number_bfs = number_fso,
