@@ -7,7 +7,7 @@
 #' @param year_first numeric, first year.
 #' @param year_last numeric, last year.
 #' @param age_fert_min numeric, minimum age (of 'fertile age').
-#' @param age_fert_max numeric, minimum age (of 'fertile age').
+#' @param age_fert_max numeric, maximum age (of 'fertile age').
 #' @param fert_hist_years how many years are used to calculate age-specific
 #'  fertility rates?
 #' @param binational boolean, `TRUE` indicates that projections discriminate
