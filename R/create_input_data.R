@@ -70,7 +70,7 @@ create_input_data <- function(
     msg = "Column `age` in `births` must be numeric."
   )
   assertthat::assert_that("n_birth" %in% names(births),
-    msg = paste0("The column `n_birth` is missing in `births`.")
+    msg = "Column `n_birth` is missing in `births`."
   )
   assertthat::assert_that(is.numeric(births$n_birth),
     msg = "Column `n_birth` in `births` must be numeric."
@@ -96,7 +96,7 @@ create_input_data <- function(
     msg = "Column `age` in `population` must be numeric."
   )
   assertthat::assert_that("n_pop" %in% names(population),
-    msg = paste0("The column `n_pop` is missing in `population`.")
+    msg = "Column `n_pop` is missing in `population`."
   )
   assertthat::assert_that(is.numeric(population$n_pop),
     msg = "Column `n_pop` in `population` must be numeric."
