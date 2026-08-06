@@ -10,11 +10,10 @@
 #'
 #' @noRd
 temporal_cubic <- function(
-  points_dat,
-  year_start,
-  year_end,
-  digits_y = 3
-) {
+    points_dat,
+    year_start,
+    year_end,
+    digits_y = 3) {
   # numeric input
   year_start <- as.numeric(year_start)
   year_end <- as.numeric(year_end)

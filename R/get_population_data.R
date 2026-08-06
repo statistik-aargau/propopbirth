@@ -29,14 +29,13 @@
 #' )
 get_population_data <- function(
     number_fso,
-    year_first, 
+    year_first,
     year_last,
-    age_fert_min, 
+    age_fert_min,
     age_fert_max,
-    spatial_code, 
+    spatial_code,
     spatial_unit,
     binational = TRUE) {
-  
   # arguments
   assertthat::assert_that(is.character(number_fso),
     msg = "The argument `number_fso` must be character."
@@ -131,11 +130,11 @@ get_population_data <- function(
       stringi::stri_unescape_unicode("Staatsangeh\\u00f6rigkeit (Kategorie) - Total")
     )
   )
-  
+
   join_col <- stringi::stri_unescape_unicode("Staatsangeh\u00f6rigkeit (Kategorie)")
-  
+
   nat_lookup_renamed <- nat_lookup |> dplyr::rename(!!join_col := nat_fso_text)
-    
+
 
   # binational? filter and text
   if (isTRUE(binational)) {
@@ -148,8 +147,10 @@ get_population_data <- function(
 
   # nationality query
   query_nat <- fso_metadata |>
-    dplyr::filter(grepl(stringi::stri_unescape_unicode(
-      "Staatsangeh\\u00f6rigkeit"), 
+    dplyr::filter(grepl(
+      stringi::stri_unescape_unicode(
+        "Staatsangeh\\u00f6rigkeit"
+      ),
       code
     )) |>
     dplyr::select(code, values, valueTexts) |>
@@ -160,8 +161,10 @@ get_population_data <- function(
 
   # Get population ----------------------------------------------------------
   query_pop <- fso_metadata |>
-    dplyr::filter(grepl(stringi::stri_unescape_unicode(
-      "Bev\\u00f6lkerungstyp"), 
+    dplyr::filter(grepl(
+      stringi::stri_unescape_unicode(
+        "Bev\\u00f6lkerungstyp"
+      ),
       code
     )) |>
     dplyr::select(code, values, valueTexts) |>
@@ -210,7 +213,7 @@ get_population_data <- function(
     dplyr::left_join(
       nat_lookup_renamed,
       by = dplyr::join_by(!!rlang::sym(join_col))
-    ) |> 
+    ) |>
     dplyr::mutate(
       year = as.numeric(Jahr),
       age = as.numeric(substr(Alter, 1, 2))

@@ -37,18 +37,17 @@
 #'   binational = TRUE
 #' )
 create_input_data <- function(
-  population,
-  births,
-  year_first,
-  year_last,
-  age_fert_min,
-  age_fert_max,
-  fert_hist_years,
-  binational = TRUE,
-  digits_tfr = 3,
-  digits_mab = 3,
-  digits_fer = 5
-) {
+    population,
+    births,
+    year_first,
+    year_last,
+    age_fert_min,
+    age_fert_max,
+    fert_hist_years,
+    binational = TRUE,
+    digits_tfr = 3,
+    digits_mab = 3,
+    digits_fer = 5) {
   # checks ------------------------------------------------------------------
   # birth data
   assertthat::assert_that("year" %in% names(births),
@@ -194,7 +193,7 @@ create_input_data <- function(
     dplyr::group_by(spatial_unit, nat, year) |>
     dplyr::filter(!is.na(fer)) |>
     dplyr::summarize(
-      mab = round(stats::weighted.mean(age, fer, na.rm = TRUE), digits_mab), 
+      mab = round(stats::weighted.mean(age, fer, na.rm = TRUE), digits_mab),
       .groups = "drop"
     ) |>
     dplyr::arrange(spatial_unit, nat, year)

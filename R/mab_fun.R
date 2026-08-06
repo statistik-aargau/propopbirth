@@ -10,8 +10,8 @@
 #' @noRd
 mab_fun <- function(
     a0,
-    age, 
-    y_no_a0, 
+    age,
+    y_no_a0,
     mab_proj) {
   # y according to regression
   y_reg <- a0 + y_no_a0

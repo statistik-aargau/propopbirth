@@ -1,10 +1,11 @@
 test_that("Snapshot tests for forecasting tfr and mab", {
   # create input data ----
   temporal_end_tfr <- tidyr::expand_grid(
-    spatial_unit = c("Aarau"), 
-    nat = c("ch", "int")) |> 
+    spatial_unit = c("Aarau"),
+    nat = c("ch", "int")
+  ) |>
     dplyr::mutate(y_end = c(0.8, 1.5))
-  
+
   input_tfr <- tibble::tibble(
     spatial_unit = rep("Aarau", 26L),
     nat = rep(c("ch", "int"), each = 13L),
@@ -19,7 +20,7 @@ test_that("Snapshot tests for forecasting tfr and mab", {
       1.9986812756844305, 1.8652936716833775, 1.8814830581283348
     )
   )
-  
+
   input_mab <- tibble::tibble(
     spatial_unit = rep("Aarau", 26L),
     nat = rep(c("ch", "int"), each = 13L),
@@ -34,7 +35,7 @@ test_that("Snapshot tests for forecasting tfr and mab", {
       31.857553809416384, 30.450291043211088, 31.093898105510792
     )
   )
-  
+
   # snapshots for TFR ----
   ## lm and cubic ----
   expect_snapshot(dput(
@@ -52,7 +53,7 @@ test_that("Snapshot tests for forecasting tfr and mab", {
       constant_model = c(model = "constant", start = 2056, end = 2075)
     )
   ))
-  
+
   ## lm and constant ----
   expect_snapshot(dput(
     forecast_tfr_mab(
@@ -69,7 +70,7 @@ test_that("Snapshot tests for forecasting tfr and mab", {
       constant_model = c(model = "constant", start = 2056, end = 2075)
     )
   ))
-  
+
   ## lm and Bezier ----
   expect_snapshot(dput(
     forecast_tfr_mab(
@@ -86,7 +87,7 @@ test_that("Snapshot tests for forecasting tfr and mab", {
       constant_model = c(model = "constant", start = 2056, end = 2075)
     )
   ))
-  
+
   ## ARIMA and cubic ----
   expect_snapshot(dput(
     forecast_tfr_mab(
@@ -103,7 +104,7 @@ test_that("Snapshot tests for forecasting tfr and mab", {
       constant_model = c(model = "constant", start = 2056, end = 2075)
     )
   ))
-  
+
   ## ARIMA and constant ----
   expect_snapshot(dput(
     forecast_tfr_mab(
@@ -120,7 +121,7 @@ test_that("Snapshot tests for forecasting tfr and mab", {
       constant_model = c(model = "constant", start = 2056, end = 2075)
     )
   ))
-  
+
   ## ARIMA and Bezier ----
   expect_snapshot(dput(
     forecast_tfr_mab(
@@ -155,7 +156,7 @@ test_that("Snapshot tests for forecasting tfr and mab", {
       constant_model = c(model = "constant", start = 2056, end = 2075)
     )
   ))
-  
+
   ## lm and constant ----
   expect_snapshot(dput(
     forecast_tfr_mab(
@@ -172,7 +173,7 @@ test_that("Snapshot tests for forecasting tfr and mab", {
       constant_model = c(model = "constant", start = 2056, end = 2075)
     )
   ))
-  
+
   ## lm and Bezier ----
   expect_snapshot(dput(
     forecast_tfr_mab(
@@ -189,7 +190,7 @@ test_that("Snapshot tests for forecasting tfr and mab", {
       constant_model = c(model = "constant", start = 2056, end = 2075)
     )
   ))
-  
+
   ## ARIMA and cubic ----
   expect_snapshot(dput(
     forecast_tfr_mab(
@@ -206,7 +207,7 @@ test_that("Snapshot tests for forecasting tfr and mab", {
       constant_model = c(model = "constant", start = 2056, end = 2075)
     )
   ))
-  
+
   ## ARIMA and constant ----
   expect_snapshot(dput(
     forecast_tfr_mab(
@@ -223,7 +224,7 @@ test_that("Snapshot tests for forecasting tfr and mab", {
       constant_model = c(model = "constant", start = 2056, end = 2075)
     )
   ))
-  
+
   ## ARIMA and Bezier ----
   expect_snapshot(dput(
     forecast_tfr_mab(
@@ -240,5 +241,4 @@ test_that("Snapshot tests for forecasting tfr and mab", {
       constant_model = c(model = "constant", start = 2056, end = 2075)
     )
   ))
-
 })

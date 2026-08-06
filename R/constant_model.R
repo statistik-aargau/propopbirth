@@ -9,8 +9,8 @@
 #'
 #' @noRd
 constant_model <- function(
-    in_dat, 
-    year_start, 
+    in_dat,
+    year_start,
     year_end) {
   # numeric input
   year_start <- as.numeric(year_start)
