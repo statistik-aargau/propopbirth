@@ -12,7 +12,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r setup, message=FALSE, warning=FALSE}
+```{r setup, message=FALSE, warning=FALSE, echo=FALSE}
 library(ggplot2)
 library(propopbirth)
 library(dplyr)
@@ -20,13 +20,15 @@ library(dplyr)
 
 ## Overview
 
-Here the **birth rate forecast** according to the **methodology of the FSO** (Federal Statistical Office) is used. The first step is to **prepare the model input data**. This is described in this vignette. The starting point is past birth and population data. Three input data sets have to be prepared:
+Here the **birth rate forecast** according to the **methodology of the FSO** (Federal Statistical Office) is used. The first step is to **prepare the model input data**. The starting point is **past birth and population data**. 
+
+Three input data sets are to be prepared:
 
 -   **TFR** (total fertility rate) per year
 -   **MAB** (mean age of the mother at birth) per year
 -   **fertility rate** per age year
 
-If the final forecast should distinguish by **nationality** and/or **spatial unit**, the three input data sets must also be differentiated according to these variables.
+If the final forecast should distinguish by **nationality** and/or **spatial unit**, the three input data sets must also differentiate according to these variables.
 
 ## Required data
 
@@ -35,17 +37,17 @@ You need birth and population data from the past to prepare the input data. **If
 +---------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | data                | description                                                                                                                                                  | variables required                                                                                                                                                |
 +=====================+==============================================================================================================================================================+===================================================================================================================================================================+
-| **birth data**      | The historical number of births by females aggregated per demographic unit and year.                                                                         | -   `year` e.g. 2010 to 2023 for the FSO's birth data                                                                                                             |
+| **birth data**      | The historical number of births by females aggregated per demographic unit and year.                                                                         | -   `year` e.g. 2010 to 2023 from the FSO's birth data                                                                                                             |
 |                     |                                                                                                                                                              |                                                                                                                                                                   |
 |                     |                                                                                                                                                              | -   `spatial_unit` one (e.g. canton) or several (e.g. municipalities) spatial units                                                                               |
 |                     |                                                                                                                                                              |                                                                                                                                                                   |
-|                     |                                                                                                                                                              | -   `nat` nationality, suggestion: 'ch' (Swiss) and 'int' (international) as in the `{propop}` package, but other categories or only one level were also possible |
+|                     |                                                                                                                                                              | -   `nat` nationality, suggestion: 'ch' (Swiss) and 'int' (international) as in the `{propop}` package, but only one level is also possible |
 |                     |                                                                                                                                                              |                                                                                                                                                                   |
-|                     |                                                                                                                                                              | -   `age` the age of mother at birth                                                                                                                              |
+|                     |                                                                                                                                                              | -   `age` the age of mothers at birth                                                                                                                              |
 |                     |                                                                                                                                                              |                                                                                                                                                                   |
 |                     |                                                                                                                                                              | -   `births` the number of births                                                                                                                                 |
 +---------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **population data** | Historical population records of females in a pre-defined age range ('fertile age', often 15 to 49) aggregated per spatial unit, year, age, and nationality. | -   `year` e.g. 2010 to 2023 for the FSO's birth data                                                                                                             |
+| **population data** | Historical population records of females in a pre-defined age range ('fertile age', often 15 to 49) aggregated per spatial unit, year, age, and nationality. | -   `year` e.g. 2010 to 2023 from the FSO's birth data                                                                                                             |
 |                     |                                                                                                                                                              |                                                                                                                                                                   |
 |                     |                                                                                                                                                              | -   `spatial_unit` one (e.g. Canton) or several (e.g. municipalities) spatial units                                                                               |
 |                     |                                                                                                                                                              |                                                                                                                                                                   |
@@ -60,14 +62,17 @@ You need birth and population data from the past to prepare the input data. **If
 
 Currently, the FSO does not publish historical births data as open data. However, we have received permission to use and publish the data in `{propopbirth}`. In the `{propopbirth}` package, the original data from the FSO is preprocessed, adapting column names and factor levels, and the municipality numbers are replaced by [municipality names](https://www.agvchapp.bfs.admin.ch/de/state/results?SnapshotDate=1.1.2023).
 
-The data for three selected municipalities looks like this:
+An excerpt of data for three selected municipalities looks like this:
 
 ```{r, echo = TRUE}
 # load package data
 data("fso_birth", package = "propopbirth")
 
 fso_birth |>
-  dplyr::filter(spatial_unit %in% c("Aarau", "Uster", "Stadt Zürich")) |>
+  dplyr::filter(
+    spatial_unit %in% c("Aarau", "Uster", "Stadt Zürich"), 
+    age %in% 30:35
+  ) |>
   DT::datatable(options = list(pageLength = 5))
 ```
 
@@ -75,7 +80,7 @@ fso_birth |>
 
 Historical population records from the FSO can be obtained with the function `propopbirth::get_population_data`, defining time span, spatial units and further specific arguments:
 
-```{r, echo = TRUE, eval=TRUE}
+```{r, echo = TRUE, eval=TRUE, message=FALSE, warning=FALSE}
 fso_pop <- get_population_data(
   number_fso = "px-x-0102010000_101",
   year_first = 2010,
@@ -86,12 +91,16 @@ fso_pop <- get_population_data(
   spatial_unit = c("Aarau", "Uster", "Stadt Zürich"),
   binational = TRUE
 )
+
+# ✔ Fetching FSO metadata for table "px-x-0102010000_101" [278ms]
+# ✔ Querying FSO population data [30.9s]
 ```
 
-The data for three selected municipalities looks like this:
+An excerpt of the data for three selected municipalities looks like this:
 
 ```{r, echo = TRUE}
 fso_pop |>
+  dplyr::filter(age %in% 30:35) |> 
   DT::datatable(options = list(pageLength = 5))
 ```
 
@@ -99,7 +108,7 @@ fso_pop |>
 
 First, the **mean annual population** is calculated for females within the so-called 'fertile age' (usually 15 to 49). For each group (e.g. spatial unit, age, nationality) and year the mean population is calculated by the average of the population at the beginning and the end of the year.
 
-Second, the births per year and group (e.g. spatial unit, age, nationality) are divided by the mean population (number of women of this group). This gives the **age-specific fertility** rate per year and group.
+Second, the births per year and group (e.g. spatial unit, age, nationality) are divided by the mean population (number of women in this group). This gives the **age-specific fertility** rate per year and group.
 
 The **TFR (total fertility rate)** is calculated as the sum of the age-specific fertility rate over age per year and group (spatial unit, nationality).
 
@@ -110,9 +119,9 @@ The parameter `fert_hist_years` determines how many years are used to calculate 
 ```{r}
 input <- create_input_data(
   population = fso_pop |>
-    dplyr::filter(spatial_unit %in% c("Aarau", "Stadt Zürich")),
+    dplyr::filter(spatial_unit %in% c("Aarau", "Uster", "Stadt Zürich")),
   births = fso_birth |>
-    dplyr::filter(spatial_unit %in% c("Aarau", "Stadt Zürich")),
+    dplyr::filter(spatial_unit %in% c("Aarau", "Uster", "Stadt Zürich")),
   year_first = 2011,
   year_last = 2023,
   age_fert_min = 15,

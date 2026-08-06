@@ -57,7 +57,7 @@ library(propopbirth)
 library(dplyr)
 ```
 
-Create input data
+**Create input data**
 
 ```{r, echo = TRUE}
 input <- create_input_data(
@@ -73,7 +73,7 @@ input <- create_input_data(
 )
 ```
 
-TFR forecast
+**TFR forecast**
 
 ```{r, echo = TRUE}
 forecast_tfr <- forecast_tfr_mab(
@@ -106,7 +106,7 @@ ggplot(forecast_tfr) +
   theme_bw()
 ```
 
-MAB forecast
+**MAB forecast**
 
 ```{r, echo = TRUE}
 forecast_mab <- forecast_tfr_mab(
@@ -138,7 +138,7 @@ ggplot(forecast_mab) +
   theme_bw()
 ```
 
-Forecast of the age-specific fertility rate
+**Forecast of the age-specific fertility rate**
 
 ```{r}
 forecast_fer <- forecast_fertility_rate(
@@ -174,7 +174,7 @@ forecast_fer |>
   scale_color_manual(values = c(
     "#ffe562", "#c6ecae", "#ffa81f", "#007AB8", "#FF82a9", "#96D4FF", "#A05388"
   )) +
-  labs(color = "Model", y = "Age") +
+  labs(color = "Age", y = "Age-specific fertility rate", x = "Year") +
   facet_wrap(nat ~ spatial_unit) +
   theme_bw() +
   theme(
@@ -199,7 +199,7 @@ forecast_fer |>
   scale_color_manual(values = c(
     "#007AB8", "#ffa81f", "#A05388", "#FF82a9", "#ffe562", "#c6ecae"
   )) +
-  labs(color = "Model", y = "Age-specific fertility rate") +
+  labs(color = "Year", y = "Age-specific fertility rate", x = "Age") +
   facet_wrap(nat ~ spatial_unit) +
   theme_bw() +
   theme(
