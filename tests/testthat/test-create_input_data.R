@@ -1,5 +1,5 @@
 test_that("Simple snapshot test for creating input data", {
-  expect_snapshot(dput(
+  expect_snapshot(as.data.frame(
     create_input_data(
       population = fso_pop |> 
         dplyr::filter(spatial_unit %in% c("Aarau")),
