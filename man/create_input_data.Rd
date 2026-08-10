@@ -64,7 +64,7 @@ create_input_data(
       "Aarau", "Stadt Zürich", "Uster"
     )),
   births = fso_birth |>
-    dplyr::filter(spatial_unit \%in\% c("Stadt Zuerich", "Uster", "Aarau")),
+    dplyr::filter(spatial_unit \%in\% c("Stadt Zürich", "Uster", "Aarau")),
   year_first = 2011,
   year_last = 2023,
   age_fert_min = 15,
