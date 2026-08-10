@@ -43,7 +43,8 @@ Imports:
     stats,
     rlang,
     stringi,
-    utils
+    utils,
+    cli
 Suggests: 
     knitr,
     ggplot2,
