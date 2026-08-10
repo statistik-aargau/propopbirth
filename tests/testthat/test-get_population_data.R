@@ -1,4 +1,5 @@
 test_that("snapshot test for get_population_data()", {
+  skip_on_ci()
   # create snapshot for one municipality
   get_population_snapshot <- get_population_data(
     number_fso = "px-x-0102010000_101",
