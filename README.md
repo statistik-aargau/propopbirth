@@ -1,4 +1,4 @@
-# Welcome to the `propopbirth` package
+# Welcome to the `propopbirth` package <a href="https://statistik-aargau.github.io/propopbirth/"><img src="man/figures/logo.png" align="right" width = "134" /></a>
 
 Birth rate forecasts based on FSO (Federal Statistical Office)
 methodology
