@@ -36,14 +36,14 @@ temporal_data <- data.frame(
 
 # Constant period
 constant_data <- data.frame(
-  x = seq(18, 21, length.out = 2),
+  x = seq(18, 22.5, length.out = 2),
   y = rep(tail(temporal_data$y, 1), 2),
   phase = "constant"
 )
 
 # Points
 breakpoints <- data.frame(
-  x = c(10, 13, 18, 21),
+  x = c(10, 13, 18, 22.5),
   y = c(
     tail(past_data$y, 1),
     tail(trend_data$y, 1),
@@ -56,7 +56,7 @@ breakpoints <- data.frame(
 p <- ggplot() +
   geom_line(
     data = tail(past_data), aes(x, y),
-    color = "#4A6CF0", linewidth = 1.1, lineend = "round"
+    color = "#c0c0c0", linewidth = 1.1, lineend = "round"
   ) +
   geom_line(
     data = trend_data, aes(x, y),
@@ -68,7 +68,7 @@ p <- ggplot() +
   ) +
   geom_line(
     data = constant_data, aes(x, y),
-    color = "#6E1F2A", linewidth = 1.3, lineend = "round"
+    color = "#9e0319", linewidth = 1.3, lineend = "round"
   ) +
   geom_point(
     data = breakpoints, aes(x, y),
