@@ -1,5 +1,6 @@
 # Hex-Sticker logo for the propopbirth package
 
+library(dplyr)
 library(hexSticker)
 library(ggplot2)
 library(sysfonts)
@@ -53,7 +54,7 @@ breakpoints <- data.frame(
 )
 
 # Plot
-p <- ggplot() +
+p1 <- ggplot() +
   geom_line(
     data = tail(past_data), aes(x, y),
     color = "#c0c0c0", linewidth = 1.1, lineend = "round"
@@ -83,11 +84,53 @@ p <- ggplot() +
     panel.background = element_rect(fill = "transparent", color = NA)
   )
 
-p
+p1
 
 # Create hex sticker and export to man/figures/
 sticker(
-  subplot   = p,
+  subplot   = p1,
+  # Package name
+  package   = "propopbirth",
+  p_size    = 20,
+  p_family  = "inter",
+  p_color   = "white",
+  p_y       = 1.45,
+  # Subplot position
+  s_x       = 1,
+  s_y       = 0.85,
+  s_width   = 1.5,
+  s_height  = 0.75,
+  # Background and borders
+  h_fill    = "#004774",
+  h_color   = "#c0c0c0",
+  h_size    = 1.4,
+  # Export
+  filename  = "man/figures/logo1.png",
+  dpi       = 300
+)
+
+# Second version
+# Create x values and four shifted peak (density-like) curves
+x <- seq(-3.5, 3.5, length.out = 300)
+
+df <- bind_rows(
+  data.frame(x = x, y = dnorm(x, mean = -0.6, sd = 1), curve = "1"),
+  data.frame(x = x, y = dnorm(x, mean = -0.2, sd = 1), curve = "2"),
+  data.frame(x = x, y = dnorm(x, mean =  0.2, sd = 1), curve = "3"),
+  data.frame(x = x, y = dnorm(x, mean =  0.6, sd = 1), curve = "4")
+)
+
+p2 <- ggplot(df, aes(x = x, y = y, color = curve)) +
+  geom_line(linewidth = 0.9, lineend = "round") +
+  scale_color_manual(values = c("#007AB8", "#A05388", "#FF82a9", "#ffa81f")) +
+  theme_void() +
+  theme(legend.position = "none")
+
+p2
+
+# Create hex sticker and export to man/figures/
+sticker(
+  subplot   = p2,
   # Package name
   package   = "propopbirth",
   p_size    = 20,
