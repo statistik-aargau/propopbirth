@@ -26,7 +26,10 @@
 #'
 #' @examples
 #' create_input_data(
-#'   population = fso_pop,
+#'   population = fso_pop |> 
+#'     dplyr::filter(spatial_unit %in% c(
+#'       "Aarau", "Stadt Zürich", "Uster"
+#'     )),
 #'   births = fso_birth |>
 #'     dplyr::filter(spatial_unit %in% c("Stadt Zuerich", "Uster", "Aarau")),
 #'   year_first = 2011,
