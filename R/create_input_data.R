@@ -100,6 +100,11 @@ create_input_data <- function(
   assertthat::assert_that(is.numeric(population$n_pop),
     msg = "Column `n_pop` in `population` must be numeric."
   )
+  
+  assertthat::assert_that(
+    setequal(unique(births$spatial_unit), unique(population$spatial_unit)),
+    msg = "Spatial units in `births` and `population` do not match."
+  )
 
   # further arguments
   assertthat::assert_that(is.numeric(year_first),

@@ -1,7 +1,8 @@
 test_that("Simple snapshot test for creating input data", {
   expect_snapshot(dput(
     create_input_data(
-      population = fso_pop,
+      population = fso_pop |> 
+        dplyr::filter(spatial_unit %in% c("Aarau")),
       births = fso_birth |>
         dplyr::filter(spatial_unit %in% c("Aarau")),
       year_first = 2011,
