@@ -12,11 +12,10 @@
 #'
 #' @noRd
 temporal_Bezier <- function(
-  points_dat,
-  year_start,
-  year_end,
-  digits_y = 3
-) {
+    points_dat,
+    year_start,
+    year_end,
+    digits_y = 3) {
   # parameters
   # numeric input
   year_start <- as.numeric(year_start)

@@ -31,7 +31,7 @@ spatial_unit, year, age, pop, with or without nat (nationality).}
 
 \item{age_fert_min}{numeric, minimum age (of 'fertile age').}
 
-\item{age_fert_max}{numeric, minimum age (of 'fertile age').}
+\item{age_fert_max}{numeric, maximum age (of 'fertile age').}
 
 \item{fert_hist_years}{how many years are used to calculate age-specific
 fertility rates?}
@@ -59,9 +59,12 @@ Create model input data
 }
 \examples{
 create_input_data(
-  population = fso_pop,
+  population = fso_pop |> 
+    dplyr::filter(spatial_unit \%in\% c(
+      "Aarau", "Stadt Zürich", "Uster"
+    )),
   births = fso_birth |>
-    dplyr::filter(spatial_unit \%in\% c("Stadt Zuerich", "Frauenfeld", "Aarau")),
+    dplyr::filter(spatial_unit \%in\% c("Stadt Zürich", "Uster", "Aarau")),
   year_first = 2011,
   year_last = 2023,
   age_fert_min = 15,
