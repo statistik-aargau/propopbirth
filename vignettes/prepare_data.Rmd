@@ -80,7 +80,7 @@ fso_birth |>
 
 Historical population records from the FSO can be obtained with the function `propopbirth::get_population_data`, defining time span, spatial units and further specific arguments:
 
-```{r, echo = TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+```{r, echo = TRUE, eval=FALSE, message=FALSE, warning=FALSE}
 fso_pop <- get_population_data(
   number_fso = "px-x-0102010000_101",
   year_first = 2010,
@@ -94,6 +94,10 @@ fso_pop <- get_population_data(
 
 # ✔ Fetching FSO metadata for table "px-x-0102010000_101" [278ms]
 # ✔ Querying FSO population data [30.9s]
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+data("fso_pop", package = "propopbirth")
 ```
 
 An excerpt of the data for three selected municipalities looks like this:
