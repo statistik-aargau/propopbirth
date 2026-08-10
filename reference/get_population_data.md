@@ -72,10 +72,10 @@ get_population_data(
   binational = TRUE
 )
 #> ℹ Fetching FSO metadata for table "px-x-0102010000_101"
-#> ✔ Fetching FSO metadata for table "px-x-0102010000_101" [883ms]
+#> ✔ Fetching FSO metadata for table "px-x-0102010000_101" [736ms]
 #> 
 #> ℹ Querying FSO population data
-#> ✔ Querying FSO population data [1.6s]
+#> ✔ Querying FSO population data [22s]
 #> 
 #> # A tibble: 840 × 5
 #>     year spatial_unit nat     age n_pop
