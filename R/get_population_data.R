@@ -23,20 +23,19 @@
 #'   year_last = 2023,
 #'   age_fert_min = 15,
 #'   age_fert_max = 49,
-#'   spatial_code = c("0261", "4566", "4001"),
-#'   spatial_unit = c("Stadt Zuerich", "Frauenfeld", "Aarau"),
+#'   spatial_code = c("0261", "0198", "4001"),
+#'   spatial_unit = c("Stadt Zuerich", "Uster", "Aarau"),
 #'   binational = TRUE
 #' )
 get_population_data <- function(
     number_fso,
-    year_first, 
+    year_first,
     year_last,
-    age_fert_min, 
+    age_fert_min,
     age_fert_max,
-    spatial_code, 
+    spatial_code,
     spatial_unit,
     binational = TRUE) {
-  
   # arguments
   assertthat::assert_that(is.character(number_fso),
     msg = "The argument `number_fso` must be character."
@@ -53,10 +52,17 @@ get_population_data <- function(
   assertthat::assert_that(is.numeric(age_fert_max),
     msg = "The argument `age_fert_max` must be numeric."
   )
+  assertthat::assert_that(is.character(spatial_code),
+    msg = "The argument `spatial_code` must be character."
+  )
+  assertthat::assert_that(is.character(spatial_unit),
+    msg = "The argument `spatial_unit` must be character."
+  )
   assertthat::assert_that(is.logical(binational),
     msg = "The argument `binational` must be logical (TRUE or FALSE)."
   )
   # Get metadata ------------------------------------------------------------
+  cli::cli_progress_step("Fetching FSO metadata for table {.val {number_fso}}")
   fso_metadata <- BFS::bfs_get_metadata(
     number_bfs = number_fso,
     language = "de"
@@ -95,7 +101,6 @@ get_population_data <- function(
   query_spatial <- spatial_selected |>
     dplyr::pull(values)
 
-
   # Get age -----------------------------------------------------------------
   query_age <- fso_metadata |>
     dplyr::filter(grepl("Alter", code)) |>
@@ -126,11 +131,11 @@ get_population_data <- function(
       stringi::stri_unescape_unicode("Staatsangeh\\u00f6rigkeit (Kategorie) - Total")
     )
   )
-  
+
   join_col <- stringi::stri_unescape_unicode("Staatsangeh\u00f6rigkeit (Kategorie)")
-  
+
   nat_lookup_renamed <- nat_lookup |> dplyr::rename(!!join_col := nat_fso_text)
-    
+
 
   # binational? filter and text
   if (isTRUE(binational)) {
@@ -143,8 +148,10 @@ get_population_data <- function(
 
   # nationality query
   query_nat <- fso_metadata |>
-    dplyr::filter(grepl(stringi::stri_unescape_unicode(
-      "Staatsangeh\\u00f6rigkeit"), 
+    dplyr::filter(grepl(
+      stringi::stri_unescape_unicode(
+        "Staatsangeh\\u00f6rigkeit"
+      ),
       code
     )) |>
     dplyr::select(code, values, valueTexts) |>
@@ -155,8 +162,10 @@ get_population_data <- function(
 
   # Get population ----------------------------------------------------------
   query_pop <- fso_metadata |>
-    dplyr::filter(grepl(stringi::stri_unescape_unicode(
-      "Bev\\u00f6lkerungstyp"), 
+    dplyr::filter(grepl(
+      stringi::stri_unescape_unicode(
+        "Bev\\u00f6lkerungstyp"
+      ),
       code
     )) |>
     dplyr::select(code, values, valueTexts) |>
@@ -188,6 +197,7 @@ get_population_data <- function(
     )
   )
 
+  cli::cli_progress_step("Querying FSO population data")
   # query
   fso_data_import <- BFS::bfs_get_data(
     number_bfs = number_fso,
@@ -205,7 +215,7 @@ get_population_data <- function(
     dplyr::left_join(
       nat_lookup_renamed,
       by = dplyr::join_by(!!rlang::sym(join_col))
-    ) |> 
+    ) |>
     dplyr::mutate(
       year = as.numeric(Jahr),
       age = as.numeric(substr(Alter, 1, 2))

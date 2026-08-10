@@ -1,6 +1,6 @@
 Package: propopbirth
 Title: Birth rate forecast based on the FSO methodology
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
     person(
       "Klemens", "Rosin", 
@@ -20,7 +20,7 @@ Authors@R: c(
     person(
       given = "Felix",
       family = "Luginbuhl",
-      role = c("ctb"),
+      role = "ctb",
       email = "felix.luginbuehl@sg.ch", 
       comment = c(ORCID = "0009-0008-6625-2899")
     )
@@ -28,7 +28,7 @@ Authors@R: c(
 Description: First, model input data are calculated. Second, TFR (total fertility 
     rate) and MAB (mean age of the mother at birth) are predicted. Third, TFR 
     and MAB forecasts are used to predict the age-specific birth rates.
-URL: Set URL, https://statistik-aargau.github.io/propopbirth/
+URL: https://github.com/statistik-aargau/propopbirth
 License: GPL (>= 3)
 Depends: 
     R (>= 3.5)
@@ -43,7 +43,8 @@ Imports:
     stats,
     rlang,
     stringi,
-    utils
+    utils,
+    cli
 Suggests: 
     knitr,
     ggplot2,
@@ -56,7 +57,7 @@ Suggests:
 Encoding: UTF-8
 Roxygen: list( markdown = TRUE, roclets = c("collate", "namespace", "rd",
     "roxyglobals::global_roclet") )
-RoxygenNote: 7.3.3
+RoxygenNote: 7.3.2
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 LazyData: true

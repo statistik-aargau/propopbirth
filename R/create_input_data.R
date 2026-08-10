@@ -7,7 +7,7 @@
 #' @param year_first numeric, first year.
 #' @param year_last numeric, last year.
 #' @param age_fert_min numeric, minimum age (of 'fertile age').
-#' @param age_fert_max numeric, minimum age (of 'fertile age').
+#' @param age_fert_max numeric, maximum age (of 'fertile age').
 #' @param fert_hist_years how many years are used to calculate age-specific
 #'  fertility rates?
 #' @param binational boolean, `TRUE` indicates that projections discriminate
@@ -26,9 +26,12 @@
 #'
 #' @examples
 #' create_input_data(
-#'   population = fso_pop,
+#'   population = fso_pop |> 
+#'     dplyr::filter(spatial_unit %in% c(
+#'       "Aarau", "Stadt Zürich", "Uster"
+#'     )),
 #'   births = fso_birth |>
-#'     dplyr::filter(spatial_unit %in% c("Stadt Zuerich", "Frauenfeld", "Aarau")),
+#'     dplyr::filter(spatial_unit %in% c("Stadt Zürich", "Uster", "Aarau")),
 #'   year_first = 2011,
 #'   year_last = 2023,
 #'   age_fert_min = 15,
@@ -37,18 +40,17 @@
 #'   binational = TRUE
 #' )
 create_input_data <- function(
-  population,
-  births,
-  year_first,
-  year_last,
-  age_fert_min,
-  age_fert_max,
-  fert_hist_years,
-  binational = TRUE,
-  digits_tfr = 3,
-  digits_mab = 3,
-  digits_fer = 5
-) {
+    population,
+    births,
+    year_first,
+    year_last,
+    age_fert_min,
+    age_fert_max,
+    fert_hist_years,
+    binational = TRUE,
+    digits_tfr = 3,
+    digits_mab = 3,
+    digits_fer = 5) {
   # checks ------------------------------------------------------------------
   # birth data
   assertthat::assert_that("year" %in% names(births),
@@ -70,7 +72,7 @@ create_input_data <- function(
     msg = "Column `age` in `births` must be numeric."
   )
   assertthat::assert_that("n_birth" %in% names(births),
-    msg = paste0("The column `n_birth` is missing in `births`.")
+    msg = "Column `n_birth` is missing in `births`."
   )
   assertthat::assert_that(is.numeric(births$n_birth),
     msg = "Column `n_birth` in `births` must be numeric."
@@ -96,10 +98,15 @@ create_input_data <- function(
     msg = "Column `age` in `population` must be numeric."
   )
   assertthat::assert_that("n_pop" %in% names(population),
-    msg = paste0("The column `n_pop` is missing in `population`.")
+    msg = "Column `n_pop` is missing in `population`."
   )
   assertthat::assert_that(is.numeric(population$n_pop),
     msg = "Column `n_pop` in `population` must be numeric."
+  )
+  
+  assertthat::assert_that(
+    setequal(unique(births$spatial_unit), unique(population$spatial_unit)),
+    msg = "Spatial units in `births` and `population` do not match."
   )
 
   # further arguments
@@ -194,7 +201,7 @@ create_input_data <- function(
     dplyr::group_by(spatial_unit, nat, year) |>
     dplyr::filter(!is.na(fer)) |>
     dplyr::summarize(
-      mab = round(stats::weighted.mean(age, fer, na.rm = TRUE), digits_mab), 
+      mab = round(stats::weighted.mean(age, fer, na.rm = TRUE), digits_mab),
       .groups = "drop"
     ) |>
     dplyr::arrange(spatial_unit, nat, year)
@@ -229,7 +236,7 @@ create_input_data <- function(
   # (at the very end of the fertility rate forecast)
   fer_y_out <- fer_y |>
     dplyr::rename(birth_rate = fer) |>
-    dplyr::select(cols_out)
+    dplyr::select(dplyr::all_of(cols_out))
 
   return(list(tfr = tfr, mab = mab, fer = fer, fer_y = fer_y_out))
 }

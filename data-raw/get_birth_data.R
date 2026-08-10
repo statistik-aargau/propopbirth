@@ -8,11 +8,10 @@
 #' @examples
 #' get_birth_data()
 get_birth_data <- function() {
-  
   # Load data
   fso_birth_raw <- data.table::fread("data-raw/fso_birth_raw.csv") |>
     tibble::as_tibble()
-  
+
   fso_municipality <- readxl::read_excel(
     "data-raw/fso_municipalities_01012023.xlsx"
   ) |>
@@ -20,7 +19,7 @@ get_birth_data <- function() {
     dplyr::select(
       spatial_unit_code = "BFS Gde-nummer", spatial_unit = Gemeindename
     )
-  
+
   # Prepare births data
   fso_birth_data <- fso_birth_raw |>
     # define factor levels for nationality
@@ -39,7 +38,7 @@ get_birth_data <- function() {
     # identify municipalities without matches (e.g. due to municipality fusions)
     dplyr::mutate(
       spatial_unit = dplyr::case_when(
-        spatial_unit == stringi::stri_unescape_unicode("Z\u00fcrich") ~ 
+        spatial_unit == stringi::stri_unescape_unicode("Z\u00fcrich") ~
           stringi::stri_unescape_unicode("Stadt Z\u00fcrich"),
         is.na(spatial_unit) ~ "unknown",
         .default = spatial_unit
@@ -47,8 +46,8 @@ get_birth_data <- function() {
     ) |>
     dplyr::select(year, spatial_unit, nat, age, n_birth = bir) |>
     dplyr::arrange(year, spatial_unit, nat, age)
-  
-  
+
+
   # output
   return(fso_birth_data)
 }

@@ -10,6 +10,6 @@ test_that("snapshot test for get_population_data()", {
     spatial_unit = c("Aarau"),
     binational = TRUE
   )
-  
+
   expect_snapshot(dput(get_population_snapshot))
 })
