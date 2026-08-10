@@ -13,14 +13,17 @@
 
 ## Citation
 
-Rosin K, Lorenz F, Efosa N (2025). *propopbirth: Birth rate forecast
-based on the FSO methodology*. R package version 0.1.0,
-<https://statistik-aargau.github.io/propopbirth/>.
+Source:
+[`DESCRIPTION`](https://github.com/statistik-aargau/propopbirth/blob/main/DESCRIPTION)
+
+Rosin K, Lorenz F, Efosa N (2026). *propopbirth: Birth rate forecast
+based on the FSO methodology*. R package version 0.1.1,
+<https://github.com/statistik-aargau/propopbirth>.
 
     @Manual{,
       title = {propopbirth: Birth rate forecast based on the FSO methodology},
       author = {Klemens Rosin and Felix Lorenz and Norah Efosa},
-      year = {2025},
-      note = {R package version 0.1.0},
-      url = {https://statistik-aargau.github.io/propopbirth/},
+      year = {2026},
+      note = {R package version 0.1.1},
+      url = {https://github.com/statistik-aargau/propopbirth},
     }

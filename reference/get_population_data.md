@@ -67,10 +67,16 @@ get_population_data(
   year_last = 2023,
   age_fert_min = 15,
   age_fert_max = 49,
-  spatial_code = c("0261", "4566", "4001"),
-  spatial_unit = c("Stadt Zuerich", "Frauenfeld", "Aarau"),
+  spatial_code = c("0261", "0198", "4001"),
+  spatial_unit = c("Stadt Zuerich", "Uster", "Aarau"),
   binational = TRUE
 )
+#> ℹ Fetching FSO metadata for table "px-x-0102010000_101"
+#> ✔ Fetching FSO metadata for table "px-x-0102010000_101" [883ms]
+#> 
+#> ℹ Querying FSO population data
+#> ✔ Querying FSO population data [1.6s]
+#> 
 #> # A tibble: 840 × 5
 #>     year spatial_unit nat     age n_pop
 #>    <dbl> <chr>        <chr> <dbl> <dbl>

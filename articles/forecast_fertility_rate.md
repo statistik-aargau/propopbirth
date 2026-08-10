@@ -6,22 +6,28 @@ The age-specific fertility rate forecast is modeled in four steps:
 
 - **Cumulate, standardize**: The age-specific fertility rate (see input
   data preparation) is cumulated and standardized to values between 0
-  and 1. This cumulated and standardized value is called $y*$.
+  and 1. This cumulated and standardized value is called $`y*`$.
 
-- **Regression**: First, $y*$ is transformed. Then, a fifth-degree
-  regression is fitted to $y*$ vs. $x$ (i.e. age + 0.5). The parameters
-  $a_{0}$, …, $a_{5}$ of the regression are estimated.
+- **Regression**: First, $`y*`$ is transformed. Then, a fifth-degree
+  regression is fitted to $`y*`$ vs. $`x`$ (i.e. age + 0.5). The
+  parameters $`a_0`$, …, $`a_5`$ of the regression are estimated.
 
-$$y = \log\left( - \log\left( y^{*} \right) \right)$$
+``` math
+ y = \log(-\log(y^*)) 
+```
 
-$$x = age + 0.5$$
+``` math
+ x = age + 0.5 
+```
 
-$$y = a_{0} + a_{1}x + a_{2}x^{2} + a_{3}x^{3} + a_{4}x^{4} + a_{5}x^{5}$$
+``` math
+ y = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4 + a_5 x^5 
+```
 
 - **Optimization**: In this step, the previously calculated MAB forecast
   is used (MAB prediction for each year in the future). From the
-  regression above, all parameters are kept constant except $a_{0}$. For
-  every year in the future, only the value of $a_{0}$ is changed (only
+  regression above, all parameters are kept constant except $`a_0`$. For
+  every year in the future, only the value of $`a_0`$ is changed (only
   the intercept, all other regression coefficients are kept constant).
   This is done for every year until the y-values (back transformed to
   fertility rates) result in the previously calculated MAB forecast.
@@ -46,18 +52,23 @@ model structure
 ## Code example
 
 ``` r
+
 library(ggplot2)
 library(propopbirth)
 library(dplyr)
 ```
 
-Create input data
+**Create input data**
 
 ``` r
+
 input <- create_input_data(
-  population = fso_pop,
+  population = fso_pop |> 
+    dplyr::filter(spatial_unit %in% c(
+      "Aarau", "Stadt Zürich", "Uster"
+    )),
   births = fso_birth |>
-    dplyr::filter(spatial_unit %in% c("Aarau", "Frauenfeld", "Stadt Zürich")),
+    dplyr::filter(spatial_unit %in% c("Aarau", "Uster", "Stadt Zürich")),
   year_first = 2011,
   year_last = 2023,
   age_fert_min = 15,
@@ -67,9 +78,10 @@ input <- create_input_data(
 )
 ```
 
-TFR forecast
+**TFR forecast**
 
 ``` r
+
 forecast_tfr <- forecast_tfr_mab(
   topic = "tfr",
   topic_data = input$tfr,
@@ -86,6 +98,7 @@ forecast_tfr <- forecast_tfr_mab(
 ```
 
 ``` r
+
 ggplot(forecast_tfr) +
   geom_line(aes(x = year, y = tfr, color = category)) +
   geom_point(aes(x = year, y = tfr, color = category)) +
@@ -99,9 +112,10 @@ ggplot(forecast_tfr) +
 fertility rate (TFR); this forecast is shown by spatial unit and
 nationality.](forecast_fertility_rate_files/figure-html/unnamed-chunk-4-1.png)
 
-MAB forecast
+**MAB forecast**
 
 ``` r
+
 forecast_mab <- forecast_tfr_mab(
   topic = "mab",
   topic_data = input$mab,
@@ -118,6 +132,7 @@ forecast_mab <- forecast_tfr_mab(
 ```
 
 ``` r
+
 ggplot(forecast_mab) +
   geom_line(aes(x = year, y = mab, color = category)) +
   geom_point(aes(x = year, y = mab, color = category)) +
@@ -131,9 +146,10 @@ ggplot(forecast_mab) +
 by spatial unit and
 nationality.](forecast_fertility_rate_files/figure-html/unnamed-chunk-6-1.png)
 
-Forecast of the age-specific fertility rate
+**Forecast of the age-specific fertility rate**
 
 ``` r
+
 forecast_fer <- forecast_fertility_rate(
   fer_dat = input$fer,
   tfr_dat = forecast_tfr,
@@ -141,9 +157,14 @@ forecast_fer <- forecast_fertility_rate(
   year_start = 2024,
   year_end = 2075
 )
+#> 
+#> ── Birth rate forecast complete ────────────────────────────────────────────────
+#> Spatial units: Aarau, Stadt Zürich, and Uster
+#> Years: 2024 to 2075
 ```
 
 ``` r
+
 forecast_fer |>
   DT::datatable(options = list(pageLength = 5))
 ```
@@ -151,6 +172,7 @@ forecast_fer |>
 Plot with year on x-axis
 
 ``` r
+
 y_last <- max(input[["fer_y"]]$year)
 
 forecast_fer |>
@@ -163,7 +185,7 @@ forecast_fer |>
   scale_color_manual(values = c(
     "#ffe562", "#c6ecae", "#ffa81f", "#007AB8", "#FF82a9", "#96D4FF", "#A05388"
   )) +
-  labs(color = "Model", y = "Age") +
+  labs(color = "Age", y = "Age-specific fertility rate", x = "Year") +
   facet_wrap(nat ~ spatial_unit) +
   theme_bw() +
   theme(
@@ -179,6 +201,7 @@ nationality.](forecast_fertility_rate_files/figure-html/unnamed-chunk-9-1.png)
 Plot with age on x-axis
 
 ``` r
+
 forecast_fer |>
   bind_rows(input$fer_y) |>
   filter(year %% 10 == 0) |>
@@ -186,9 +209,9 @@ forecast_fer |>
   ggplot() +
   geom_line(aes(age, birth_rate, color = year), linewidth = 0.5) +
   scale_color_manual(values = c(
-     "#007AB8", "#ffa81f", "#A05388", "#FF82a9", "#ffe562", "#c6ecae"
+    "#007AB8", "#ffa81f", "#A05388", "#FF82a9", "#ffe562", "#c6ecae"
   )) +
-  labs(color = "Model", y = "Year") +
+  labs(color = "Year", y = "Age-specific fertility rate", x = "Age") +
   facet_wrap(nat ~ spatial_unit) +
   theme_bw() +
   theme(

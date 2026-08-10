@@ -7,17 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Birth rate forecast based on the FSO methodology • propopbirth</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Inter-0.4.10/font.css" rel="stylesheet">
+<link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/Inter-0.4.10/font.css" rel="stylesheet">
 <link href="deps/Source_Code_Pro-0.4.10/font.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Birth rate forecast based on the FSO methodology">
 <meta name="description" content="First, model input data are calculated. Second, TFR (total fertility rate) and MAB (mean age of the mother at birth) are predicted. Third, TFR and MAB forecasts are used to predict the age-specific birth rates.">
 <meta property="og:description" content="First, model input data are calculated. Second, TFR (total fertility rate) and MAB (mean age of the mother at birth) are predicted. Third, TFR and MAB forecasts are used to predict the age-specific birth rates.">
+<meta property="og:image" content="https://statistik-aargau.github.io/propopbirth/logo.png">
 </head>
 <body>
 <p>
+
 
 
 
@@ -38,7 +40,7 @@
 
     <a class="navbar-brand me-2" href="index.html">propopbirth</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,6 +64,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/statistik-aargau/propopbirth/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -70,18 +73,23 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="propopbirth">propopbirth<a class="anchor" aria-label="anchor" href="#propopbirth"></a>
-</h1></div>
-<p>Birth rate forecasts based on FSO (Federal Statistical Office) methodology.</p>
+<div class="page-header">
+<img src="logo.png" class="logo" alt=""><h1 id="welcome-to-the-propopbirth-package-">Welcome to the <code>propopbirth</code> package 
+<a class="anchor" aria-label="anchor" href="#welcome-to-the-propopbirth-package-"></a>
+</h1>
+</div>
+<p>Birth rate forecasts based on FSO (Federal Statistical Office) methodology</p>
+<!-- badges: start -->
+
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>The <a href="https://statistik-aargau.github.io/propopbirth/">propopbirth</a> package consists of several modules: First, model input data are calculated. Second, TFR (total fertility rate) and MAB (mean age of the mother at birth) are predicted. Third, TFR and MAB forecasts are used to predict the age-specific birth rates.</p>
+<p>The <a href="https://github.com/statistik-aargau/propopbirth" class="external-link">propopbirth</a> package consists of three modules: First, model input data are calculated. Second, <strong>TFR (total fertility rate)</strong> and <strong>MAB (mean age of the mother at birth)</strong> are predicted. Third, TFR and MAB forecasts are used to predict the <strong>age-specific birth rates</strong>.</p>
 </div>
 <div class="section level2">
 <h2 id="population-projections">Population projections<a class="anchor" aria-label="anchor" href="#population-projections"></a>
 </h2>
-<p>The output from <a href="https://statistik-aargau.github.io/propopbirth/">propopbirth</a> is fully compatible with <a href="https://statistik-aargau.github.io/propop/index.html" class="external-link"><code>{propop} - An R package for population projections in R</code></a>. <code>{propop}</code> needs future birth rates as input. This is only available at the FSO at cantonal level. With <a href="https://statistik-aargau.github.io/propopbirth/">propopbirth</a> the birth rates can also be calculated for other spatial units or with own hypothesis.</p>
+<p>The output from <a href="https://github.com/statistik-aargau/propopbirth" class="external-link">propopbirth</a> is fully compatible with <a href="https://statistik-aargau.github.io/propop/index.html" class="external-link"><code>{propop} - An R package for population projections in R</code></a>. <code>{propop}</code> needs future birth rates as input. This is only available at the FSO at cantonal level. <a href="https://github.com/statistik-aargau/propopbirth" class="external-link">propopbirth</a> can also calculate birth rates for other spatial units or with own hypothesis.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -99,7 +107,7 @@
 </li>
 <li>Vignette 2: <strong>Forecast of</strong> <strong>TFR</strong> (total fertility rate) and <strong>MAB</strong> (mean age of the mother at birth), with <strong>examples</strong>
 </li>
-<li>Vignette 3: Forecast of the <strong>age-specific fertility rate</strong>; including an <strong>example of the complete forecast</strong> of the birth rate</li>
+<li>Vignette 3: Forecast of the <strong>age-specific fertility rate</strong>; including an <strong>example of the complete forecast</strong> of the age-specific birth rate</li>
 </ul>
 </div>
 <div class="section level2">
@@ -108,24 +116,23 @@
 <div class="section level3">
 <h3 id="limitations">Limitations<a class="anchor" aria-label="anchor" href="#limitations"></a>
 </h3>
-<p>With population scenario models, it is always necessary to check whether the spatial units are large enough to ensure that <strong>meaningful forecast estimates</strong>. There is no population limit specification by the FSO, when not to run the forecast models. However, it <strong>visual checks</strong> are advisable (graphs see vignettes for examples). These are helpful to verify whether the estimates for the birth rate forecasts are meaningful.</p>
+<p>With population scenario models, it is always necessary to check whether the spatial units are large enough to ensure that <strong>meaningful forecast estimates</strong>. There is no population limit specification by the FSO, when not to run the forecast models. However, it <strong>visual checks</strong> are advisable (see vignette graphs for examples). These are helpful to verify whether the estimates for the birth rate forecasts are meaningful.</p>
 </div>
 <div class="section level3">
 <h3 id="future-plans">Future plans<a class="anchor" aria-label="anchor" href="#future-plans"></a>
 </h3>
-<p>Currently, FSO birth data is not accessible with the required variables. For this reason, the birth data is included in the <a href="https://statistik-aargau.github.io/propopbirth/">propopbirth</a> package. As soon as the birth data is publicly accessible (similar to population data), it will be directly accessible in <a href="https://statistik-aargau.github.io/propopbirth/">propopbirth</a> . This will allow a more flexible selection of spatial units (not only municipalities, but also districts).</p>
+<p>Currently, FSO birth data is not accessible with the required variables. For this reason, the birth data (up to year 2023) is included in the <a href="https://github.com/statistik-aargau/propopbirth" class="external-link">propopbirth</a> package. As soon as the birth data is publicly accessible (similar to population data), it will be directly accessible in <a href="https://github.com/statistik-aargau/propopbirth" class="external-link">propopbirth</a> . This will allow a more flexible selection of spatial units (not only municipalities, but also districts).</p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
-<p>Detailed examples with explanations are provided in the vignettes (step by step). Here an example of entire birth rate forecast for three municipalities.</p>
+<p>Detailed examples with explanations are provided in the vignettes (step by step). This is an example of entire birth rate forecast for three municipalities:</p>
 <div class="section level3">
 <h3 id="birth-and-population-data">Birth and population data<a class="anchor" aria-label="anchor" href="#birth-and-population-data"></a>
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://statistik-aargau.github.io/propopbirth/">propopbirth</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/statistik-aargau/propopbirth" class="external-link">propopbirth</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -135,7 +142,7 @@
 <code class="sourceCode R"><span><span class="va">input</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_input_data.html">create_input_data</a></span><span class="op">(</span></span>
 <span>  population <span class="op">=</span> <span class="va">fso_pop</span>,</span>
 <span>  births <span class="op">=</span> <span class="va">fso_birth</span> <span class="op">|&gt;</span> </span>
-<span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">spatial_unit</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Aarau"</span>, <span class="st">"Frauenfeld"</span>, <span class="st">"Stadt Zürich"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">spatial_unit</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Aarau"</span>, <span class="st">"Uster"</span>, <span class="st">"Stadt Zürich"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  year_first <span class="op">=</span> <span class="fl">2011</span>,</span>
 <span>  year_last <span class="op">=</span> <span class="fl">2023</span>,</span>
 <span>  age_fert_min <span class="op">=</span> <span class="fl">15</span>,</span>
@@ -195,10 +202,17 @@
 <div class="section level2">
 <h2 id="acknowledgment">Acknowledgment<a class="anchor" aria-label="anchor" href="#acknowledgment"></a>
 </h2>
-<p>We acknowledge the Federal Statistical Office (FSO) for providing their SAS code used for fertility projections. And we are grateful to the FSO for giving the permission to use the birth data within the <a href="https://statistik-aargau.github.io/propopbirth/">propopbirth</a> package.</p>
+<p>We acknowledge the Federal Statistical Office (FSO) for providing their SAS code used for fertility projections. And we are grateful to the FSO for giving the permission to use the birth data within the <a href="https://github.com/statistik-aargau/propopbirth" class="external-link">propopbirth</a> package.</p>
 </div>
 </div>
-  </main><aside class="col-md-3"><div class="license">
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/statistik-aargau/propopbirth/" class="external-link">Browse source code</a></li>
+</ul>
+</div>
+
+<div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
@@ -224,7 +238,14 @@
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
+<li><a href="https://www.repostatus.org/#active" class="external-link"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active - The project has reached a stable, usable state and is being actively developed."></a></li>
+<li><a href="https://github.com/statistik-aargau/propopbirth/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/statistik-aargau/propopbirth/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+</ul>
+</div>
 
   </aside>
 </div>
@@ -235,7 +256,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

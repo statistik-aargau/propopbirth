@@ -1,25 +1,20 @@
 # Prepare input data
 
-``` r
-library(ggplot2)
-library(propopbirth)
-library(dplyr)
-```
-
 ## Overview
 
 Here the **birth rate forecast** according to the **methodology of the
 FSO** (Federal Statistical Office) is used. The first step is to
-**prepare the model input data**. This is described in this vignette.
-The starting point is past birth and population data. Three input data
-sets have to be prepared:
+**prepare the model input data**. The starting point is **past birth and
+population data**.
+
+Three input data sets are to be prepared:
 
 - **TFR** (total fertility rate) per year
 - **MAB** (mean age of the mother at birth) per year
 - **fertility rate** per age year
 
 If the final forecast should distinguish by **nationality** and/or
-**spatial unit**, the three input data sets must also be differentiated
+**spatial unit**, the three input data sets must also differentiate
 according to these variables.
 
 ## Required data
@@ -36,21 +31,25 @@ variables:
 
 Currently, the FSO does not publish historical births data as open data.
 However, we have received permission to use and publish the data in
-[propopbirth](https://statistik-aargau.github.io/propopbirth/). In the
-[propopbirth](https://statistik-aargau.github.io/propopbirth/) package,
+[propopbirth](https://github.com/statistik-aargau/propopbirth). In the
+[propopbirth](https://github.com/statistik-aargau/propopbirth) package,
 the original data from the FSO is preprocessed, adapting column names
 and factor levels, and the municipality numbers are replaced by
 [municipality
 names](https://www.agvchapp.bfs.admin.ch/de/state/results?SnapshotDate=1.1.2023).
 
-The data for three selected municipalities looks like this:
+An excerpt of data for three selected municipalities looks like this:
 
 ``` r
+
 # load package data
 data("fso_birth", package = "propopbirth")
 
 fso_birth |>
-  dplyr::filter(spatial_unit %in% c("Aarau", "Frauenfeld", "Stadt Zürich")) |>
+  dplyr::filter(
+    spatial_unit %in% c("Aarau", "Uster", "Stadt Zürich"), 
+    age %in% 30:35
+  ) |>
   DT::datatable(options = list(pageLength = 5))
 ```
 
@@ -62,22 +61,29 @@ function
 defining time span, spatial units and further specific arguments:
 
 ``` r
+
 fso_pop <- get_population_data(
   number_fso = "px-x-0102010000_101",
   year_first = 2010,
   year_last = 2023,
   age_fert_min = 15,
   age_fert_max = 49,
-  spatial_code = c("4001", "4566", "0261"),
-  spatial_unit = c("Aarau", "Frauenfeld", "Stadt Zürich"),
+  spatial_code = c("4001", "0198", "0261"),
+  spatial_unit = c("Aarau", "Uster", "Stadt Zürich"),
   binational = TRUE
 )
+
+# ✔ Fetching FSO metadata for table "px-x-0102010000_101" [278ms]
+# ✔ Querying FSO population data [30.9s]
 ```
 
-The data for three selected municipalities looks like this:
+An excerpt of the data for three selected municipalities looks like
+this:
 
 ``` r
+
 fso_pop |>
+  dplyr::filter(age %in% 30:35) |> 
   DT::datatable(options = list(pageLength = 5))
 ```
 
@@ -90,7 +96,7 @@ calculated by the average of the population at the beginning and the end
 of the year.
 
 Second, the births per year and group (e.g. spatial unit, age,
-nationality) are divided by the mean population (number of women of this
+nationality) are divided by the mean population (number of women in this
 group). This gives the **age-specific fertility** rate per year and
 group.
 
@@ -112,27 +118,30 @@ averaged over the years; then the ratio between births and population is
 calculated.
 
 ``` r
+
 input <- create_input_data(
-  population = fso_pop,
-  births = fso_birth |> 
-    dplyr::filter(spatial_unit %in% c("Aarau", "Frauenfeld", "Stadt Zürich")),
+  population = fso_pop |>
+    dplyr::filter(spatial_unit %in% c("Aarau", "Uster", "Stadt Zürich")),
+  births = fso_birth |>
+    dplyr::filter(spatial_unit %in% c("Aarau", "Uster", "Stadt Zürich")),
   year_first = 2011,
   year_last = 2023,
   age_fert_min = 15,
   age_fert_max = 49,
   fert_hist_years = 3,
   binational = TRUE
-) 
+)
 ```
 
 ### TFR
 
 ``` r
+
 ggplot(input$tfr) +
   geom_line(aes(x = year, y = tfr, color = nat), linewidth = 0.7) +
   scale_color_manual(values = c("#ffa81f", "#A05388")) +
   labs(color = "Nationality", y = "TFR") +
-  facet_wrap(~ spatial_unit) +
+  facet_wrap(~spatial_unit) +
   theme_bw()
 ```
 
@@ -141,18 +150,20 @@ over time is displayed by spatial unit and
 nationality.](prepare_data_files/figure-html/unnamed-chunk-5-1.png)
 
 ``` r
-input$tfr |> 
+
+input$tfr |>
   DT::datatable(options = list(pageLength = 5))
 ```
 
 ### MAB
 
 ``` r
+
 ggplot(input$mab) +
   geom_line(aes(x = year, y = mab, color = nat), linewidth = 0.7) +
   scale_color_manual(values = c("#ffa81f", "#A05388")) +
   labs(color = "Nationality", y = "MAB") +
-  facet_wrap(~ spatial_unit) +
+  facet_wrap(~spatial_unit) +
   theme_bw()
 ```
 
@@ -161,18 +172,20 @@ birth (MAB) over time is displayed by spatial unit and
 nationality.](prepare_data_files/figure-html/unnamed-chunk-7-1.png)
 
 ``` r
-input$mab |> 
+
+input$mab |>
   DT::datatable(options = list(pageLength = 5))
 ```
 
 ### Age-specific fertility rate
 
 ``` r
+
 ggplot(input$fer) +
   geom_line(aes(x = age, y = fer, color = nat), linewidth = 0.7) +
   scale_color_manual(values = c("#ffa81f", "#A05388")) +
   labs(color = "Nationality", y = "Fertility rate") +
-  facet_wrap(~ spatial_unit) +
+  facet_wrap(~spatial_unit) +
   theme_bw()
 ```
 
@@ -181,6 +194,7 @@ spatial unit and nationality (average over a selected number of
 years).](prepare_data_files/figure-html/unnamed-chunk-9-1.png)
 
 ``` r
-input$fer |> 
+
+input$fer |>
   DT::datatable(options = list(pageLength = 5))
 ```

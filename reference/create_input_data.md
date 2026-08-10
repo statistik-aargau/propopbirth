@@ -46,7 +46,7 @@ create_input_data(
 
 - age_fert_max:
 
-  numeric, minimum age (of 'fertile age').
+  numeric, maximum age (of 'fertile age').
 
 - fert_hist_years:
 
@@ -84,9 +84,12 @@ list with:
 
 ``` r
 create_input_data(
-  population = fso_pop,
+  population = fso_pop |> 
+    dplyr::filter(spatial_unit %in% c(
+      "Aarau", "Stadt Zürich", "Uster"
+    )),
   births = fso_birth |>
-    dplyr::filter(spatial_unit %in% c("Stadt Zuerich", "Frauenfeld", "Aarau")),
+    dplyr::filter(spatial_unit %in% c("Stadt Zürich", "Uster", "Aarau")),
   year_first = 2011,
   year_last = 2023,
   age_fert_min = 15,
