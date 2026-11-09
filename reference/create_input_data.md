@@ -101,64 +101,64 @@ create_input_data(
 #> # A tibble: 78 × 4
 #>    spatial_unit nat    year   tfr
 #>    <chr>        <chr> <dbl> <dbl>
-#>  1 Aarau        ch     2011  1.33
-#>  2 Aarau        ch     2012  1.29
-#>  3 Aarau        ch     2013  1.31
-#>  4 Aarau        ch     2014  1.11
-#>  5 Aarau        ch     2015  1.31
-#>  6 Aarau        ch     2016  1.56
-#>  7 Aarau        ch     2017  1.16
-#>  8 Aarau        ch     2018  1.13
-#>  9 Aarau        ch     2019  1.24
-#> 10 Aarau        ch     2020  1.20
+#>  1 Aarau        ch     2011  1.24
+#>  2 Aarau        ch     2012  1.16
+#>  3 Aarau        ch     2013  1.21
+#>  4 Aarau        ch     2014  0.98
+#>  5 Aarau        ch     2015  1.20
+#>  6 Aarau        ch     2016  1.52
+#>  7 Aarau        ch     2017  1.07
+#>  8 Aarau        ch     2018  1.06
+#>  9 Aarau        ch     2019  1.14
+#> 10 Aarau        ch     2020  1.12
 #> # ℹ 68 more rows
 #> 
 #> $mab
 #> # A tibble: 78 × 4
 #>    spatial_unit nat    year   mab
 #>    <chr>        <chr> <dbl> <dbl>
-#>  1 Aarau        ch     2011  32.7
-#>  2 Aarau        ch     2012  31.8
-#>  3 Aarau        ch     2013  33.2
-#>  4 Aarau        ch     2014  33.4
-#>  5 Aarau        ch     2015  33.8
-#>  6 Aarau        ch     2016  33.8
-#>  7 Aarau        ch     2017  33.7
+#>  1 Aarau        ch     2011  32.9
+#>  2 Aarau        ch     2012  32.3
+#>  3 Aarau        ch     2013  33.9
+#>  4 Aarau        ch     2014  33.0
+#>  5 Aarau        ch     2015  34.0
+#>  6 Aarau        ch     2016  33.6
+#>  7 Aarau        ch     2017  33.8
 #>  8 Aarau        ch     2018  33.8
-#>  9 Aarau        ch     2019  33.2
-#> 10 Aarau        ch     2020  33.3
+#>  9 Aarau        ch     2019  33.4
+#> 10 Aarau        ch     2020  33.5
 #> # ℹ 68 more rows
 #> 
 #> $fer
 #> # A tibble: 210 × 4
-#>    spatial_unit nat     age    fer
-#>    <chr>        <chr> <dbl>  <dbl>
-#>  1 Aarau        ch       15 0     
-#>  2 Aarau        ch       16 0     
-#>  3 Aarau        ch       17 0     
-#>  4 Aarau        ch       18 0     
-#>  5 Aarau        ch       19 0     
-#>  6 Aarau        ch       20 0     
-#>  7 Aarau        ch       21 0     
-#>  8 Aarau        ch       22 0.0108
-#>  9 Aarau        ch       23 0.0114
-#> 10 Aarau        ch       24 0     
+#>    spatial_unit nat     age   fer
+#>    <chr>        <chr> <dbl> <dbl>
+#>  1 Aarau        ch       15     0
+#>  2 Aarau        ch       16     0
+#>  3 Aarau        ch       17     0
+#>  4 Aarau        ch       18     0
+#>  5 Aarau        ch       19     0
+#>  6 Aarau        ch       20     0
+#>  7 Aarau        ch       21     0
+#>  8 Aarau        ch       22     0
+#>  9 Aarau        ch       23     0
+#> 10 Aarau        ch       24     0
 #> # ℹ 200 more rows
 #> 
 #> $fer_y
 #> # A tibble: 2,730 × 5
 #>    spatial_unit nat    year   age birth_rate
 #>    <chr>        <chr> <dbl> <dbl>      <dbl>
-#>  1 Aarau        ch     2011    15    0      
-#>  2 Aarau        ch     2011    16    0      
-#>  3 Aarau        ch     2011    17    0      
-#>  4 Aarau        ch     2011    18    0      
-#>  5 Aarau        ch     2011    19    0      
-#>  6 Aarau        ch     2011    20    0      
-#>  7 Aarau        ch     2011    21    0      
-#>  8 Aarau        ch     2011    22    0.0253 
-#>  9 Aarau        ch     2011    23    0.00930
-#> 10 Aarau        ch     2011    24    0.0154 
+#>  1 Aarau        ch     2011    15          0
+#>  2 Aarau        ch     2011    16          0
+#>  3 Aarau        ch     2011    17          0
+#>  4 Aarau        ch     2011    18          0
+#>  5 Aarau        ch     2011    19          0
+#>  6 Aarau        ch     2011    20          0
+#>  7 Aarau        ch     2011    21          0
+#>  8 Aarau        ch     2011    22          0
+#>  9 Aarau        ch     2011    23          0
+#> 10 Aarau        ch     2011    24          0
 #> # ℹ 2,720 more rows
 #> 
 ```
