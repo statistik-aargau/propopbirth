@@ -80,12 +80,13 @@ forecast_tfr_mab <- function(
       "(e.g. trend_past = 7)."
     )
   )
-  assertthat::assert_that("trend_prop" %in% names(trend_model),
+  if (all(is.na(temporal_end))) {
+  assertthat::assert_that("trend_prop" %in% names(temporal_model),
     msg = paste0(
       "Please specify the proportional amount of past years used to fit the ",
       "`trend_model` (e.g. trend_prop = 0.5)."
     )
-  )
+  )}
   ## temporal model ---------------------------------------------------------
   assertthat::assert_that("model" %in% names(temporal_model),
     msg = paste0(
